@@ -32,9 +32,9 @@ $ curl --noproxy localhost http://localhost:8080/siga/index.html
 
 Atenção, antes de colocar qualquer documento sigiloso no Siga-Doc é necessário criar algumas senhas
 para que os documentos estejam protegidos. Crie uma [GUID aleatória](https://www.guidgenerator.com/), abra o arquivo
-standalone.xml e substitua todas as ocorrências de "***REPLACE-WITH-RANDOM-GUID***" pela GUID recém criada.
+standalone.xml e substitua todas as ocorrências de "\*\*\*REPLACE-WITH-RANDOM-GUID\*\*\*" pela GUID recém criada.
 
-Além disso, será necessário substituir "***RECAPTCHA-KEY***" e "***RECAPTCHA-PASSWORD***" por uma chave e uma senha válidas
+Além disso, será necessário substituir "\*\*\*RECAPTCHA-KEY\*\*\*" e "\*\*\*RECAPTCHA-PASSWORD\*\*\*" por uma chave e uma senha válidas
 do (Google reCaptcha)[https://www.google.com/recaptcha/about/].
 
 ## Customizando
