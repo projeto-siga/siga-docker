@@ -1,6 +1,6 @@
 # siga-docker
 
-Este repositório contém os artefatos necessários para executar o Siga-Doc utilizando o Docker. 
+Este repositório contém os artefatos necessários para executar o Siga-Doc utilizando o Docker.
 Antes de mais nada, será necessário instalar alguns pré-requisitos, se ainda não estiverem instalados:
 
 - Instale o [Git](https://gist.github.com/derhuerst/1b15ff4652a867391f03)
@@ -32,22 +32,34 @@ $ curl --noproxy localhost http://localhost:8080/siga/index.html
 
 Atenção, antes de colocar qualquer documento sigiloso no Siga-Doc é necessário criar algumas senhas
 para que os documentos estejam protegidos. Crie uma [GUID aleatória](https://www.guidgenerator.com/), abra o arquivo
-standalone.xml e substitua todas as ocorrências de "\*\*\*REPLACE-WITH-RANDOM-GUID\*\*\*" pela GUID recém criada.
+```standalone.xml``` e substitua todas as ocorrências de "\*\*\*REPLACE-WITH-RANDOM-GUID\*\*\*" pela GUID recém criada.
 
-Além disso, será necessário substituir "\*\*\*RECAPTCHA-KEY\*\*\*" e "\*\*\*RECAPTCHA-PASSWORD\*\*\*" por uma chave e uma senha válidas
-do (Google reCaptcha)[https://www.google.com/recaptcha/about/].
+Além disso, será necessário substituir as propriedades ```siga.ex.autenticacao.recaptcha.key=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI``` e
+```siga.ex.autenticacao.recaptcha.pwd=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe``` 
+por uma chave e uma senha válidas do (Google reCaptcha)[https://www.google.com/recaptcha/about/].
+
+Despois de realizar alterações no ```standalone.xml```, será necessário recompilar a imagem para que elas sejam percebidas.
+Para interromper a execução utilize ```Ctrl+C```, depois execute os seguintes comandos:
+
+```
+$ docker-compose build
+$ docker-compose up
+```
+
+Quando as senhas são substituídas, se já existir uma sessão ativa em algum navegador, ocorrerá um erro de ```signature verification failed```. 
+Para corrigi-lo, basta [apagar os cookies](https://support.google.com/chrome/answer/95647?co=GENIE.Platform%3DDesktop&hl=pt-BR) do navegador.
+
 
 ## Customizando
 
-O funcionamento do Siga-Doc pode ser customizado 
+O funcionamento do Siga-Doc pode ser customizado
 para as necessidades específicas de cada empresa através de parâmetros de ambiente.
-Estes parâmetros estão definidos dentro do arquivo docker-compose.yml. 
+Estes parâmetros estão definidos dentro do arquivo docker-compose.yml.
 
 ```
-PROP_SIGA...: 
+PROP_SIGA...:
 ```
 
 A seguir, descreveremos os parâmetros que podem ser customizados e suas funções.
 
 #### PROP_SIGA...
-
