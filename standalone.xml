@@ -59,8 +59,8 @@
         <property name="siga.ex.assinador.externo.password" value="***REPLACE-WITH-RANDOM-GUID***"/>
         <property name="siga.ex.assinador.externo.popup.url" value="https://ittrufusion.appspot.com"/>
         <property name="siga.ex.autenticacao.pwd" value="***REPLACE-WITH-RANDOM-GUID***"/>
-        <property name="siga.ex.autenticacao.recaptcha.key" value="***RECAPTCHA-KEY***"/>
-        <property name="siga.ex.autenticacao.recaptcha.pwd" value="***RECAPTCHA-PASSWORD***"/>
+        <property name="siga.ex.autenticacao.recaptcha.key" value="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"/>
+        <property name="siga.ex.autenticacao.recaptcha.pwd" value="6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"/>
         <property name="siga.ex.classificacao.mascara.entrada" value="([0-9]{0,2})\.?([0-9]{0,2})?\.?([0-9]{0,2})?\.?([0-9]{0,2})?([A-Z])?"/>
         <property name="siga.ex.classificacao.mascara.javascript" value="99.99.99.99"/>
         <property name="siga.ex.classificacao.mascara.nomeNivel.0" value="NULL"/>
@@ -86,12 +86,12 @@
         <property name="siga.url" value="http://localhost:8080/siga/"/>
         <property name="sigaex.assinador.externo.password" value="Teste123"/>
         <property name="sigaex.redis.database" value="1"/>
-        <property name="sigaex.redis.master.host" value="redis.jfrj.gov.br"/>
+        <property name="sigaex.redis.master.host" value="redis"/>
         <property name="sigaex.redis.master.port" value="6379"/>
-        <property name="sigaex.redis.password1" value="senha"/>
-        <property name="sigaex.redis.slave.host" value="redis.jfrj.gov.br"/>
-        <property name="sigaex.redis.slave.port" value="6379"/>
-        <property name="sigaex.upload.dir.temp" value="/Users/nato/Downloads"/>
+        <property name="sigaex.redis.password.x" value="senha"/>
+        <property name="sigaex.redis.slave.host.x" value=""/>
+        <property name="sigaex.redis.slave.port.x" value="6379"/>
+        <property name="sigaex.upload.dir.temp.x" value=""/>
         <property name="sigaex.url" value="http://localhost:8080/sigaex/"/>
         <property name="sigagc.url" value="http://localhost:8080/sigagc/app/"/>
         <property name="sigaidp.crossdomain.url" value="http://localhost:8080"/>
@@ -107,6 +107,14 @@
         <property name="xjus.password" value="***REPLACE-WITH-RANDOM-GUID***"/>
         <property name="xjus.permalink.url" value="/siga/permalink/"/>
         <property name="xjus.url" value="http://localhost:8888/api/v1/index/siga-doc/query"/>
+        <property name="servidor.smtp" value="email.server"/>
+        <property name="servidor.smtp.porta" value="1025"/>
+        <property name="servidor.smtp.auth" value="true"/>
+        <property name="servidor.smtp.auth.usuario" value="siga"/>
+        <property name="servidor.smtp.auth.senha" value="siga"/>
+        <property name="servidor.smtp.debug" value="false"/>
+        <property name="servidor.smtp.usuario.remetente" value="Administrador do Siga&lt;siga@exemplo.com.br>"/>
+        <property name="siga.ex.email.baseTeste" value="Obs. Mensagem enviada pelo sistema de testes. Favor desconsiderar."/>
     </system-properties>
     <management>
         <security-realms>
