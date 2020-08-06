@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+  app.server:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      TZ: "America/Denver"
+    volumes:
+      - log-volume:/var/log
+
+  mysql.server:
+    image: mysql:8.0.21
+    restart: always
+    expose:
+      - 5002
+    ports:
+      - 5002:3306
+    environment:
+      TZ: "America/Denver"
+      MYSQL_ROOT_PASSWORD: "siga"
+      MYSQL_ROOT_HOST: "%"
+    volumes:
+      - ./mysql-init.sql:/docker-entrypoint-initdb.d/init.sql
+    #   - mysql-volume:/var/lib/mysql
+
+  email.server:
+    image: schickling/mailcatcher
+    restart: always
+    ports:
+      - 49163:1080
+      - 1025:1025
+
+  redis:
+    image: redis:alpine
+
+volumes:
+  log-volume: {}
+  mysql-volume: {}
