@@ -1,3 +1,5 @@
+## Instalação com Docker-Compose
+
 Este repositório contém os artefatos necessários para executar o Siga-Doc utilizando o Docker.
 Antes de mais nada, será necessário instalar alguns pré-requisitos, se ainda não estiverem instalados:
 
