@@ -82,16 +82,16 @@
         <property name="siga.pagina.inicial.urlxxx" value="../../sigaex/app/mesa"/>
         <property name="siga.properties.versao" value="develop"/>
         <property name="siga.qtdDiasDevolucao" value="5"/>
-        <property name="siga.sinc.password" value="***GUID***"/>
+        <property name="siga.sinc.password" value="***REPLACE-WITH-RANDOM-GUID***"/>
         <property name="siga.url" value="http://localhost:8080/siga/"/>
-        <property name="sigaex.assinador.externo.password" value="Teste123"/>
+        <property name="sigaex.assinador.externo.password" value="***REPLACE-WITH-RANDOM-GUID***"/>
         <property name="sigaex.redis.database" value="1"/>
-        <property name="sigaex.redis.master.host" value="redis"/>
+        <property name="sigaex.redis.master.host" value="redis.server"/>
         <property name="sigaex.redis.master.port" value="6379"/>
-        <property name="sigaex.redis.password.x" value="senha"/>
-        <property name="sigaex.redis.slave.host.x" value=""/>
-        <property name="sigaex.redis.slave.port.x" value="6379"/>
-        <property name="sigaex.upload.dir.temp.x" value=""/>
+        <property name="sigaex.redis.password" value=""/>
+        <property name="sigaex.redis.slave.host" value="redis.server"/>
+        <property name="sigaex.redis.slave.port" value="6379"/>
+        <property name="sigaex.upload.dir.temp" value="/var/user/temp"/>
         <property name="sigaex.url" value="http://localhost:8080/sigaex/"/>
         <property name="sigagc.url" value="http://localhost:8080/sigagc/app/"/>
         <property name="sigaidp.crossdomain.url" value="http://localhost:8080"/>

@@ -13,6 +13,7 @@ services:
       - redis.server
     volumes:
       - log-volume:/var/log
+      - tmp-volume:/var/tmp/siga
 
   mysql.server:
     image: mysql:8.0.21
@@ -47,4 +48,5 @@ services:
 
 volumes:
   log-volume: {}
+  tmp-volume: {}
   mysql-volume: {}
