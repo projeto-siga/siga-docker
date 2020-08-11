@@ -46,6 +46,24 @@ $ docker-compose up
 Quando as senhas são substituídas, se já existir uma sessão ativa em algum navegador, ocorrerá um erro de `signature verification failed`.
 Para corrigi-lo, basta [apagar os cookies](https://support.google.com/chrome/answer/95647?co=GENIE.Platform%3DDesktop&hl=pt-BR) do navegador.
 
+## Customizando Logo, Brasão, Etc.
+
+Abaixo do logo do Siga, no cabeçalho, existe uma informação do grupo de órgãos/empresas que está usando o siga. Troque a propriedade 
+```siga.cabecalho.titulo````, no ```standalone.xml``` para substituir ```Justiça Federal``` pelo texto desejado.
+
+```XML
+<property name="siga.cabecalho.titulo" value="Justiça Federal"/>
+```
+
+Quando é criado um documento, em seu cabeçalho há um brasão, um título e um subtítulo, antes do nome do órgão. Customize as propriedades 
+abaixo para alterar conforme desejado. O brasão deve ser informado na forma de uma URL, começando com ```http``` ou ```https```.
+
+```XML
+<property name="siga.ex.default.template.brasao" value="contextpath/imagens/brasaoColoridoTRF2.png"/>
+<property name="siga.ex.default.template.titulo" value="PODER JUDICIÁRIO"/>
+<property name="siga.ex.default.template.subtitulo" value="JUSTIÇA FEDERAL"/>
+```
+
 ## Substituindo o Banco de Dados
 
 Por padrão o Siga utilizará o banco de dados MySQL v8.0.21 que é iniciado pelo docker-compose e que pode ser acessado externamente em

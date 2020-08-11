@@ -37,6 +37,11 @@
         <extension module="org.wildfly.extension.undertow"/>
     </extensions>
     <system-properties>
+        <property name="siga.cabecalho.titulo" value="Justiça Federal"/>
+        <property name="siga.ex.default.template.brasao" value="contextpath/imagens/brasaoColoridoTRF2.png"/>
+        <property name="siga.ex.default.template.titulo" value="PODER JUDICIÁRIO"/>
+        <property name="siga.ex.default.template.subtitulo" value="JUSTIÇA FEDERAL"/>
+
         <property name="blucservice.endpoint" value="http://localhost:8080/blucservice/api/v1"/>
         <property name="exservice.endpoint" value="http://localhost:8080/sigaex/servicos/ExService?wsdl"/>
         <property name="exservice.qname" value="http://impl.service.ex.siga.jfrj.gov.br/"/>
@@ -55,7 +60,6 @@
         <property name="org.apache.catalina.connector.URI_ENCODING" value="UTF-8"/>
         <property name="org.apache.catalina.connector.USE_BODY_ENCODING_FOR_QUERY_STRING" value="true"/>
         <property name="siga.base.url" value="http://localhost:8080"/>
-        <property name="siga.cabecalho.titulo" value="Justiça Federal"/>
         <property name="siga.ex.assinador.externo.password" value="***REPLACE-WITH-RANDOM-GUID***"/>
         <property name="siga.ex.assinador.externo.popup.url" value="https://ittrufusion.appspot.com"/>
         <property name="siga.ex.autenticacao.pwd" value="***REPLACE-WITH-RANDOM-GUID***"/>
