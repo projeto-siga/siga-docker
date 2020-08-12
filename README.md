@@ -32,10 +32,10 @@ para que os documentos estejam protegidos. Crie uma [GUID aleatória](https://ww
 
 Além disso, será necessário substituir as propriedades `siga.ex.autenticacao.recaptcha.key=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI`
 e `siga.ex.autenticacao.recaptcha.pwd=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe` por uma chave e uma senha válidas
-do (Google reCaptcha)[https://www.google.com/recaptcha/about/].
+do [Google reCaptcha](https://www.google.com/recaptcha/about/).
 
 Sempre que realizar alterações no `standalone.xml`, será necessário recompilar a imagem para que elas sejam percebidas.
-Para interromper a execução utilize `Ctrl+C`, depois execute os seguintes comandos abaixo. O parâmetro ```--no-cache```obriga o
+Para interromper a execução utilize `Ctrl+C`, depois execute os comandos abaixo. O parâmetro ```--no-cache```obriga o
 docker-compose a baixar novamente as dependências, o que será útil quando desejar atualizar para novas versões.
 
 ```
@@ -49,7 +49,7 @@ Para corrigi-lo, basta [apagar os cookies](https://support.google.com/chrome/ans
 ## Customizando Logo, Brasão, Etc.
 
 Ao lado do logo do Siga, no cabeçalho, existe um espaço para o logo do grupo de órgãos/empresas. Troque a propriedade 
-```siga.cabecalho.logo````, no ```standalone.xml```, para substituir o logo do TRF2 pela imagem desejada. Utilize um PNG com 38px de altura
+```siga.cabecalho.logo```, no ```standalone.xml```, para substituir o logo do TRF2 pela imagem desejada. Utilize um PNG com 38px de altura
 e que tenha fundo transparente. O logo pode ser informado na forma de uma URL, começando com ```http``` ou ```https```.
 
 ```XML
@@ -64,7 +64,7 @@ Existem [aplicativos online](https://base64.guru/converter/encode/image/png) par
 ```
 
 Abaixo do logo do Siga, no cabeçalho, é apresentado o título do grupo de órgãos/empresas. Troque a propriedade 
-```siga.cabecalho.titulo````, no ```standalone.xml``` para substituir ```Justiça Federal``` pelo texto desejado.
+```siga.cabecalho.titulo``` para substituir ```Justiça Federal``` pelo texto desejado.
 
 ```XML
 <property name="siga.cabecalho.titulo" value="Justiça Federal"/>
@@ -80,7 +80,7 @@ abaixo para alterar conforme desejado. O brasão pode ser informado na forma de 
 <property name="siga.ex.default.template.subtitulo" value="JUSTIÇA FEDERAL"/>
 ```
 
-Por fim, os relatórios do sistema também apresentam brasão, título e subtítulo subtítulo. Para configurá-los, utilize as propriedades abaixo:
+Por fim, os relatórios do sistema também apresentam brasão, título e subtítulo. Para configurá-los, utilize as propriedades abaixo:
 
 ```XML
 <property name="siga.relat.brasao" value="brasao.png"/>
@@ -90,8 +90,8 @@ Por fim, os relatórios do sistema também apresentam brasão, título e subtít
 
 ## Carregando Dados de Pessoas e Lotações
 
-O Siga recebe informações sobre pessoas, cargos, funções gratificadas e lotações a partir de um arquivo XML de dados corporativos. O formato deste
-arquivo e instruções de como criá-lo podem ser vistas no [wiki](https://github.com/projeto-siga/siga/wiki/Dados-Corporativos). Depois de criar 
+O Siga é alimentado com informações sobre pessoas, cargos, funções gratificadas e lotações a partir de um arquivo XML de dados corporativos. O formato deste
+arquivo e instruções de como criá-lo podem ser vistas na [wiki](https://github.com/projeto-siga/siga/wiki/Dados-Corporativos). Depois de criar 
 o XML, ele deve ser submetido ao Siga através de um webservice conforme [instruções](https://github.com/projeto-siga/siga/wiki/ImportacaoXML#utilizando-o-webservice-de-importa%C3%A7%C3%A3o).
 
 ## Substituindo o Banco de Dados
@@ -163,7 +163,7 @@ Depois que o Siga estiver funcionando no novo servidor de email, remova do `dock
 
 ## Executando o Siga numa Instalação Própria do JBoss
 
-A configuração oferecida neste repositório funciona perfeitamente e pode ser utilizada em ambiente de produção para empresas
+A configuração oferecida neste repositório funciona perfeitamente e pode ser utilizada em ambiente de produção por empresas
 que tem um número relativamente pequeno de funcionários. Caso haja necessidade de maior capacidade computacional, será
 necessário substituir essa única instância de servidor de aplicação por um cluster. Nesse caso, não é recomendado utilizar
 a implantação em modo `standalone`. Para montar um servidor JBoss do zero, siga o passo a passo descrito no arquivo
