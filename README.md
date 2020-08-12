@@ -24,7 +24,7 @@ Pronto, o Siga-Doc estará ativo. Para acessá-lo, aponte o navegador Google Chr
 
 Faça login com ZZ99999/Password1 e já poderá ver o Siga funcionando.
 
-## Customizações Mínimas
+## Customizações Mínimas de Segurança
 
 Atenção, antes de colocar qualquer documento sigiloso no Siga-Doc é necessário criar algumas senhas
 para que os documentos estejam protegidos. Crie uma [GUID aleatória](https://www.guidgenerator.com/), abra o arquivo
@@ -48,21 +48,51 @@ Para corrigi-lo, basta [apagar os cookies](https://support.google.com/chrome/ans
 
 ## Customizando Logo, Brasão, Etc.
 
-Abaixo do logo do Siga, no cabeçalho, existe uma informação do grupo de órgãos/empresas que está usando o siga. Troque a propriedade 
+Ao lado do logo do Siga, no cabeçalho, existe um espaço para o logo do grupo de órgãos/empresas. Troque a propriedade 
+```siga.cabecalho.logo````, no ```standalone.xml```, para substituir o logo do TRF2 pela imagem desejada. Utilize um PNG com 38px de altura
+e que tenha fundo transparente. O logo pode ser informado na forma de uma URL, começando com ```http``` ou ```https```.
+
+```XML
+<property name="siga.cabecalho.logo" value="https://siga.jfrj.jus.br/siga/imagens/logo-trf2-38px.png"/>
+```
+
+Outra opção consiste em informar o logo no formato ```data:image/png;base64,...```, desta forma não será necessário ter o logo disponível em algum outro servidor web.
+Existem [aplicativos online](https://base64.guru/converter/encode/image/png) para codificar o PNG em Base64.
+
+```XML
+<property name="siga.cabecalho.logo" value="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAmCAYAAAA1MOAmAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH4QUPFCQBHI8nPQAAA2pJREFUWMO9l0uIllUYx3/P+DkalpO3RU1hoQ7jpUDSTS1Gogi6EAm1icxFi4aKFkHShSgolAgqyhYhtGhX1sKwoqhFg1BYQS1EjJpoSiq7OEmTM47+WvS8cnqZyzvTNz3wcs57zvme/3n/z/WDWYi6RO3l/xD1UnVopr/rmCXeGWDZnIKpZ6ezuWHHTIAiAnUrcF4FWFygbTaqxuv9R9aoJ9SuuQK6Ux0pwH5Wn27716l3+W9Zo36n/qVubgrY1GY3197HgdPAQmC/uh1YpXapi/PpUqP8Uash2Kna+xDwFXAJsAJ4BTgGjNTOfabeCpyJiMY0vlGjsaWuV0edXl5UO2dis/drChbm+lXqFw0AP1CXRQOgxcBBoKdai+SkiL2NwOa05WRyqDWVu6fOrcDqYnt/DWgNsBHozkDvzHG0br/pvmqbOlbQcUK9oLZ/vEbZM+omdUPxrFcXoS5K7rfk05cBfLBQcEodUvsKoC01kGPq5RPk0bMSajdwExC1rD5W2OAX4JOI+C0VzQM+Aq4sYzEi9lX0TiSt5Pt24OQkbP4KHADeK258IXBxcWYwIvYVdp7ULi11dwP3Hc2Mj7oyaa1kd6MSExHjEXEP8NA0ZzuBveraTFWljDUBaxVuvEvtAPprxbETWJJjAHuAG9tSSiZYP0e9Tj1U0HZRZv1KXmpbLcv5UvXbWokx43Ddf24LSs9Kt3++2J6XntoXEYfmoj3YnF/Tm7T2zGW/2JtgK9QFM20JWjPEq3gdjoixqbJFO5vUmDZbtAFsOJ+Ohh7cLL6mULaqqtQz7oizAPaq36iDxfhj1qsHM6a+Vr8EromIkxnY3+fZQfVAxuIj6h/pSG+pS+u3Xa7ep+5Ux9W38/0y9eUskNvU11PJberanO/Ns9vVc9Uj6gPqh7l/72Qcb1D/VB8t1vaogzm/Wj2t7lB7Ull/7eLzc7wl9+8/6/oNPEpgufoccANwGHgVOD/371A3AT8AT0VE1Xv0Zx8yUIVIU28czwZ0NfBxRBwtPHIk09Zw8c9mB3At8HBEfD6Zp01H4wtJzUp1Xc7vrumo6Hu8aCEmjLOO7N/n1+pZ5eqv5fhEsb+gAOoG3szieoX6LrBzsnR1FNgFvFOs7QU+zYwxoD4GHAd+Ap4FBoqzvwNPZsNUXf5Itfk35wXnXBwGnuIAAAAASUVORK5CYII="/>
+```
+
+Abaixo do logo do Siga, no cabeçalho, é apresentado o título do grupo de órgãos/empresas. Troque a propriedade 
 ```siga.cabecalho.titulo````, no ```standalone.xml``` para substituir ```Justiça Federal``` pelo texto desejado.
 
 ```XML
 <property name="siga.cabecalho.titulo" value="Justiça Federal"/>
 ```
 
+
 Quando é criado um documento, em seu cabeçalho há um brasão, um título e um subtítulo, antes do nome do órgão. Customize as propriedades 
-abaixo para alterar conforme desejado. O brasão deve ser informado na forma de uma URL, começando com ```http``` ou ```https```.
+abaixo para alterar conforme desejado. O brasão pode ser informado na forma de uma URL, começando com ```http``` ou ```https```, ou diretamente como ```data:image/png;base64,...```.
 
 ```XML
 <property name="siga.ex.default.template.brasao" value="contextpath/imagens/brasaoColoridoTRF2.png"/>
 <property name="siga.ex.default.template.titulo" value="PODER JUDICIÁRIO"/>
 <property name="siga.ex.default.template.subtitulo" value="JUSTIÇA FEDERAL"/>
 ```
+
+Por fim, os relatórios do sistema também apresentam brasão, título e subtítulo subtítulo. Para configurá-los, utilize as propriedades abaixo:
+
+```XML
+<property name="siga.relat.brasao" value="brasao.png"/>
+<property name="siga.relat.titulo" value="PODER JUDICIÁRIO"/>
+<property name="siga.relat.subtitulo" value="JUSTIÇA FEDERAL"/>
+```
+
+## Carregando Dados de Pessoas e Lotações
+
+O Siga recebe informações sobre pessoas, cargos, funções gratificadas e lotações a partir de um arquivo XML de dados corporativos. O formato deste
+arquivo e instruções de como criá-lo podem ser vistas no [wiki](https://github.com/projeto-siga/siga/wiki/Dados-Corporativos). Depois de criar 
+o XML, ele deve ser submetido ao Siga através de um webservice conforme [instruções](https://github.com/projeto-siga/siga/wiki/ImportacaoXML#utilizando-o-webservice-de-importa%C3%A7%C3%A3o).
 
 ## Substituindo o Banco de Dados
 

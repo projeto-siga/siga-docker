@@ -38,9 +38,15 @@
     </extensions>
     <system-properties>
         <property name="siga.cabecalho.titulo" value="Justiça Federal"/>
+        <property name="siga.cabecalho.logo" value="/siga/imagens/logo-trf2-38px.png"/>
+
         <property name="siga.ex.default.template.brasao" value="contextpath/imagens/brasaoColoridoTRF2.png"/>
         <property name="siga.ex.default.template.titulo" value="PODER JUDICIÁRIO"/>
         <property name="siga.ex.default.template.subtitulo" value="JUSTIÇA FEDERAL"/>
+
+        <property name="siga.relat.brasao" value="brasao.png"/>
+        <property name="siga.relat.titulo" value="PODER JUDICIÁRIO"/>
+        <property name="siga.relat.subtitulo" value="JUSTIÇA FEDERAL"/>
 
         <property name="blucservice.endpoint" value="http://localhost:8080/blucservice/api/v1"/>
         <property name="exservice.endpoint" value="http://localhost:8080/sigaex/servicos/ExService?wsdl"/>
