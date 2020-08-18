@@ -627,10 +627,10 @@
     </profile>
     <interfaces>
         <interface name="management">
-            <any-ipv4-address/>
+            <inet-address value="${jboss.bind.address.management:127.0.0.1}"/>
         </interface>
         <interface name="public">
-            <any-ipv4-address/>
+            <inet-address value="${jboss.bind.address:127.0.0.1}"/>
         </interface>
     </interfaces>
     <socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:0}">
