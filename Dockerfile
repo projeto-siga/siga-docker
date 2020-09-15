@@ -13,6 +13,12 @@ RUN pwd
 
 RUN ls
 
+RUN curl -s https://api.github.com/repos/projeto-siga/siga-docker/releases/latest
+RUN curl -s https://api.github.com/repos/projeto-siga/siga-docker/releases/latest | grep browser_download_url
+RUN curl -s https://api.github.com/repos/projeto-siga/siga-docker/releases/latest | grep browser_download_url | grep .war
+RUN curl -s https://api.github.com/repos/projeto-siga/siga-docker/releases/latest | grep browser_download_url | grep .war | cut -d '"' -f 4
+RUN curl -s https://api.github.com/repos/projeto-siga/siga-docker/releases/latest | grep browser_download_url | grep .war | cut -d '"' -f 4 | wget -i -
+
 #--- DOWNLOAD LATEST VERSION FROM GITHUB
 RUN echo "downloading ckeditor.war" && curl -s https://api.github.com/repos/projeto-siga/siga-docker/releases/latest | grep browser_download_url | grep .war | cut -d '"' -f 4 | xargs wget
 
