@@ -1,4 +1,4 @@
-FROM daggerok/jboss-eap-7.2
+FROM daggerok/jboss-eap-7.2:7.2.5-alpine
 MAINTAINER crivano@jfrj.jus.br
 
 #--- ADD ORACLE AND MYSQL DRIVERS
