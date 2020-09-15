@@ -7,12 +7,22 @@ ADD --chown=jboss ./modules.tar.gz ${JBOSS_HOME}/
 #--- SET TIMEZONE
 #--- RUN sh -c "ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone"
 
+RUN cd ${JBOSS_HOME}
+
+RUN pwd
+
+RUN ls
+
 #--- DOWNLOAD LATEST VERSION FROM GITHUB
 RUN echo "downloading ckeditor.war" && curl -s https://api.github.com/repos/projeto-siga/siga-docker/releases/latest \
   | grep browser_download_url \
   | grep .war \
   | cut -d '"' -f 4 \
   | wget -qi -
+
+RUN pwd
+
+RUN ls
 
 #--- DEPLOY DO ARQUIVO .WAR ---
 RUN mv ckeditor.war ${JBOSS_HOME}/standalone/deployments/
