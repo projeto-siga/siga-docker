@@ -18,7 +18,7 @@ RUN echo "downloading ckeditor.war" && curl -s https://api.github.com/repos/proj
   | grep browser_download_url \
   | grep .war \
   | cut -d '"' -f 4 \
-  | wget -qi -
+  | wget -i -
 
 RUN pwd
 
