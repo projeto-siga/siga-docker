@@ -14,11 +14,7 @@ RUN pwd
 RUN ls
 
 #--- DOWNLOAD LATEST VERSION FROM GITHUB
-RUN echo "downloading ckeditor.war" && curl -s https://api.github.com/repos/projeto-siga/siga-docker/releases/latest \
-  | grep browser_download_url \
-  | grep .war \
-  | cut -d '"' -f 4 \
-  | wget -i -
+RUN echo "downloading ckeditor.war" && curl -s https://api.github.com/repos/projeto-siga/siga-docker/releases/latest | grep browser_download_url | grep .war | cut -d '"' -f 4 | xargs wget
 
 RUN pwd
 
@@ -32,7 +28,7 @@ RUN echo "downloading blucservice.war" && curl -s https://api.github.com/repos/a
   | grep browser_download_url \
   | grep blucservice.war \
   | cut -d '"' -f 4 \
-  | wget -qi -
+  | xargs wget
 
 #--- DEPLOY DO ARQUIVO .WAR ---
 RUN mv blucservice.war ${JBOSS_HOME}/standalone/deployments/
@@ -45,7 +41,7 @@ RUN echo "downloading vizservice.war" && curl -s https://api.github.com/repos/pr
   | grep browser_download_url \
   | grep vizservice.war \
   | cut -d '"' -f 4 \
-  | wget -qi -
+  | xargs wget
 
 #--- DEPLOY DO ARQUIVO .WAR ---
 RUN mv vizservice.war ${JBOSS_HOME}/standalone/deployments/
@@ -55,7 +51,7 @@ RUN echo "downloading siga.war, sigaex.war and sigawf.war" && curl -s https://ap
   | grep browser_download_url \
   | grep .war \
   | cut -d '"' -f 4 \
-  | wget -qi -
+  | xargs wget
 
 #--- DEPLOY DO ARQUIVO .WAR ---
 RUN mv siga.war ${JBOSS_HOME}/standalone/deployments/
