@@ -1,25 +1,31 @@
-version: "3"
+version: "3.8"
 
 services:
-  app.server:
+  appserver:
+    user: root
+    container_name: appserver
     build: .
+    depends_on:
+      - mysqlserver
+      - redisserver
+      - emailserver
     ports:
       - "8080:8080"
     environment:
       TZ: "America/Denver"
-    links:
-      - mysql.server
-      - email.server
-      - redis.server
+      JBOSS_USER: "root"
     volumes:
       - log-volume:/var/log
       - tmp-volume:/var/tmp/siga
+    networks:
+      - siga
 
-  mysql.server:
+  mysqlserver:
+    container_name: mysqlserver
     image: mysql:8.0.21
     restart: always
     expose:
-      - 5001
+      - "3306"
     ports:
       - 5001:3306
     environment:
@@ -28,25 +34,37 @@ services:
       MYSQL_ROOT_HOST: "%"
     volumes:
       - ./mysql-init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - siga
     #   - mysql-volume:/var/lib/mysql
 
-  redis.server:
+  redisserver:
+    container_name: redisserver
     image: redis:alpine
     expose:
-      - 5002
+      - "6379"
     ports:
       - 5002:6379
+    networks:
+      - siga
   
-  email.server:
+  emailserver:
+    container_name: emailserver
     image: schickling/mailcatcher
     restart: always
     expose:
-      - 5003
+      - "1080"
+      - "1045"
     ports:
       - 5003:1080
-      - 1025:1025
+      - 5004:1025
+    networks:
+      - siga
 
 volumes:
   log-volume: {}
   tmp-volume: {}
   mysql-volume: {}
+
+networks:
+  siga:
