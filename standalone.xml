@@ -96,10 +96,10 @@
         <property name="siga.url" value="http://localhost:8080/siga/"/>
         <property name="sigaex.assinador.externo.password" value="***REPLACE-WITH-RANDOM-GUID***"/>
         <property name="sigaex.redis.database" value="1"/>
-        <property name="sigaex.redis.master.host" value="redis.server"/>
+        <property name="sigaex.redis.master.host" value="redisserver"/>
         <property name="sigaex.redis.master.port" value="6379"/>
         <property name="sigaex.redis.password" value=""/>
-        <property name="sigaex.redis.slave.host" value="redis.server"/>
+        <property name="sigaex.redis.slave.host" value="redisserver"/>
         <property name="sigaex.redis.slave.port" value="6379"/>
         <property name="sigaex.upload.dir.temp" value="/var/user/temp"/>
         <property name="sigaex.url" value="http://localhost:8080/sigaex/"/>
@@ -117,7 +117,7 @@
         <property name="xjus.password" value="***REPLACE-WITH-RANDOM-GUID***"/>
         <property name="xjus.permalink.url" value="/siga/permalink/"/>
         <property name="xjus.url" value="http://localhost:8888/api/v1/index/siga-doc/query"/>
-        <property name="servidor.smtp" value="email.server"/>
+        <property name="servidor.smtp" value="emailserver"/>
         <property name="servidor.smtp.porta" value="1025"/>
         <property name="servidor.smtp.auth" value="true"/>
         <property name="servidor.smtp.auth.usuario" value="siga"/>
@@ -242,7 +242,7 @@
         <subsystem xmlns="urn:jboss:domain:datasources:5.0">
             <datasources>
                 <datasource jndi-name="java:/jboss/datasources/SigaCpDS" pool-name="SigaCpDS" enabled="true" spy="true">
-                    <connection-url>jdbc:mysql://mysql.server:3306/corporativo?noAccessToProcedureBodies=true</connection-url>
+                    <connection-url>jdbc:mysql://mysqlserver:3306/corporativo?noAccessToProcedureBodies=true</connection-url>
                     <driver>mysql.jar</driver>
                     <pool>
                         <min-pool-size>1</min-pool-size>
@@ -257,7 +257,7 @@
                     </timeout>
                 </datasource>
                 <datasource jndi-name="java:/jboss/datasources/SigaExDS" pool-name="SigaExDS" enabled="true" spy="true">
-                    <connection-url>jdbc:mysql://mysql.server:3306/siga?noAccessToProcedureBodies=true</connection-url>
+                    <connection-url>jdbc:mysql://mysqlserver:3306/siga?noAccessToProcedureBodies=true</connection-url>
                     <driver>mysql.jar</driver>
                     <pool>
                         <min-pool-size>1</min-pool-size>
@@ -272,7 +272,7 @@
                     </timeout>
                 </datasource>
                 <datasource jndi-name="java:/jboss/datasources/SigaWfDS" pool-name="SigaWfDS" enabled="true" spy="true">
-                    <connection-url>jdbc:mysql://mysql.server:3306/sigawf?noAccessToProcedureBodies=true</connection-url>
+                    <connection-url>jdbc:mysql://mysqlserver:3306/sigawf?noAccessToProcedureBodies=true</connection-url>
                     <driver>mysql.jar</driver>
                     <pool>
                         <min-pool-size>1</min-pool-size>
@@ -627,10 +627,10 @@
     </profile>
     <interfaces>
         <interface name="management">
-            <inet-address value="${jboss.bind.address.management:0.0.0.-}"/>
+            <inet-address value="${jboss.bind.address.management:127.0.0.1}"/>
         </interface>
         <interface name="public">
-            <inet-address value="${jboss.bind.address:0.0.0.0}"/>
+            <inet-address value="${jboss.bind.address:127.0.0.1}"/>
         </interface>
     </interfaces>
     <socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:0}">
