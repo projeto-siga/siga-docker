@@ -30,8 +30,8 @@ Atenção, antes de colocar qualquer documento sigiloso no Siga-Doc é necessár
 para que os documentos estejam protegidos. Crie uma [GUID aleatória](https://www.guidgenerator.com/), abra o arquivo
 `siga-docker/standalone.xml` e substitua todas as ocorrências de `***REPLACE-WITH-RANDOM-GUID***` pela GUID recém criada.
 
-Além disso, será necessário substituir as propriedades `siga.ex.autenticacao.recaptcha.key=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI`
-e `siga.ex.autenticacao.recaptcha.pwd=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe` por uma chave e uma senha válidas
+Além disso, será necessário substituir as propriedades `siga.recaptcha.key=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI`
+e `siga.recaptcha.pwd=6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe` por uma chave e uma senha válidas
 do [Google reCaptcha](https://www.google.com/recaptcha/about/).
 
 Sempre que realizar alterações no `standalone.xml`, será necessário recompilar a imagem para que elas sejam percebidas.
@@ -75,9 +75,15 @@ Quando é criado um documento, em seu cabeçalho há um brasão, um título e um
 abaixo para alterar conforme desejado. O brasão pode ser informado na forma de uma URL, começando com ```http``` ou ```https```, ou diretamente como ```data:image/png;base64,...```.
 
 ```XML
-<property name="siga.ex.default.template.brasao" value="contextpath/imagens/brasaoColoridoTRF2.png"/>
-<property name="siga.ex.default.template.titulo" value="PODER JUDICIÁRIO"/>
-<property name="siga.ex.default.template.subtitulo" value="JUSTIÇA FEDERAL"/>
+<property name="sigaex.modelos.cabecalho.brasao" value="contextpath/imagens/brasaoColoridoTRF2.png"/>
+<property name="sigaex.modelos.cabecalho.titulo" value="PODER JUDICIÁRIO"/>
+<property name="sigaex.modelos.cabecalho.subtitulo" value="JUSTIÇA FEDERAL"/>
+```
+
+Quando é criado um processo administrativo, ele recebe um carimbo de contagem de páginas que contém um título. Customize a propriedade abaixo para alterar conforme desejado.
+
+```XML
+<property name="sigaex.carimbo.texto.superior" value="Justiça Federal"/>
 ```
 
 Por fim, os relatórios do sistema também apresentam brasão, título e subtítulo. Para configurá-los, utilize as propriedades abaixo:
@@ -135,7 +141,7 @@ proporiedades abaixo no `standalone.xml`.
 <property name="sigaex.redis.database" value="1"/>
 <property name="sigaex.redis.master.host" value="redis.server"/>
 <property name="sigaex.redis.master.port" value="6379"/>
-<property name="sigaex.redis.password" value=""/>
+<property name="sigaex.redis.password" value="***REPLACE-WITH-RANDOM-GUID***"/>
 <property name="sigaex.redis.slave.host" value="redis.server"/>
 <property name="sigaex.redis.slave.port" value="6379"/>
 ```
@@ -150,16 +156,30 @@ pelos usuários do sistema, é necessário substituir o MailCatcher por um servi
 algumas propriedades do `standalone.xml` para indicar o novo servidor de email.
 
 ```XML
-<property name="servidor.smtp" value="email.server"/>
-<property name="servidor.smtp.porta" value="1025"/>
-<property name="servidor.smtp.auth" value="true"/>
-<property name="servidor.smtp.auth.usuario" value="siga"/>
-<property name="servidor.smtp.auth.senha" value="siga"/>
-<property name="servidor.smtp.debug" value="false"/>
-<property name="servidor.smtp.usuario.remetente" value="Administrador do Siga&lt;siga@exemplo.com.br>"/>
+<property name="siga.smtp" value="email.server"/>
+<property name="siga.smtp.porta" value="1025"/>
+<property name="siga.smtp.auth" value="true"/>
+<property name="siga.smtp.auth.usuario" value="siga"/>
+<property name="siga.smtp.auth.senha" value="siga"/>
+<property name="siga.smtp.debug" value="false"/>
+<property name="siga.smtp.usuario.remetente" value="Administrador do Siga&lt;siga@exemplo.com.br>"/>
 ```
 
 Depois que o Siga estiver funcionando no novo servidor de email, remova do `docker-compose.yaml` o serviço `email.server`.
+
+## Substituindo o Provedor de Assinaturas Digitais
+
+As propriedades abaixo configuram o Siga para utilizar como provedor de assinaturas digitais o sistema Ittru Fusion, um Software As A Service (SaaS) fornecido gratuitamente dentro de limites de uso moderados. Para instalações com um grande volume é conveniente entrar em contato com os fornecedores. Mais informações em [https://ittrufusion.appspot.com/#/about](https://ittrufusion.appspot.com/#/about). 
+
+Além de produzir assinaturas digitais com certificado, o Ittru Fusion também será utilizado para gerar hashs de validação para as assinaturas com senha. Uma alternativa ao Ittru Fusion é a instalação do [Assijus](https://github.com/assijus/assijus), um componente open-source com as mesmas funcionalidades, mas que não é simples de ser instalado e requer configuração que só pode ser realizada pelo TRF2.
+
+```XML
+    <property name="sigaex.assinador.externo.popup.url" value="https://ittrufusion.appspot.com"/>
+
+    <property name="sigaex.carimbo.sistema" value="siga-docker"/>
+    <property name="sigaex.carimbo.url" value="https://ittrufusion.appspot.com/api/v1"/>
+    <property name="sigaex.carimbo.public.key" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAllav1+eJ3w5Idge/vQ1zZSziGiuOUBviZhcw0JZ9Bg90zG7Uz3wFGQeKnG0DNTBKwjC3MHI7AZy4G+ji35J+gp+0aZLDkuwx17JDuJfuJe6gHRlfcm50McuLL0vaU5gQ2InAo7FssjuOuLp9c3FGBGmiDFK1vUhKwdvY14inYzrZaHSVsppSYX9zjnhQiQxRnLzFzkZsZkl/Orz2O9rvmJx048lcmnOiLvm3ge7Jq2KZHIYzdsw5F3VGtlhLFBZ49g6Rmp4ClgPtpwDOGj78oyJVxLW3XXN1VP1JnActFkNlmBNi+8cUZ8IX15j+FDOL9+tQR+FMC7wtHypshR5zVQIDAQAB"/>
+```
 
 ## Executando o Siga numa Instalação Própria do JBoss
 

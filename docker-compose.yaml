@@ -40,6 +40,7 @@ services:
 
   redisserver:
     container_name: redisserver
+    command: redis-server --requirepass ***REPLACE-WITH-RANDOM-GUID***
     image: redis:alpine
     expose:
       - "6379"

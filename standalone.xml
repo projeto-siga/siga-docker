@@ -37,94 +37,52 @@
         <extension module="org.wildfly.extension.undertow"/>
     </extensions>
     <system-properties>
+        <property name="siga.jwt.secret" value="***REPLACE-WITH-RANDOM-GUID***"/>
+        <property name="siga.sinc.password" value="***REPLACE-WITH-RANDOM-GUID***"/>
+        <property name="sigaex.webdav.senha" value="***REPLACE-WITH-RANDOM-GUID***"/>
+
+        <property name="siga.recaptcha.key" value="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"/>
+        <property name="siga.recaptcha.pwd" value="6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"/>
+
         <property name="siga.cabecalho.titulo" value="Justiça Federal"/>
         <property name="siga.cabecalho.logo" value="/siga/imagens/logo-trf2-38px.png"/>
 
-        <property name="siga.ex.default.template.brasao" value="contextpath/imagens/brasaoColoridoTRF2.png"/>
-        <property name="siga.ex.default.template.titulo" value="PODER JUDICIÁRIO"/>
-        <property name="siga.ex.default.template.subtitulo" value="JUSTIÇA FEDERAL"/>
+        <property name="sigaex.modelos.cabecalho.brasao" value="contextpath/imagens/brasaoColoridoTRF2.png"/>
+        <property name="sigaex.modelos.cabecalho.titulo" value="PODER JUDICIÁRIO"/>
+        <property name="sigaex.modelos.cabecalho.subtitulo" value="JUSTIÇA FEDERAL"/>
 
         <property name="siga.relat.brasao" value="brasao.png"/>
         <property name="siga.relat.titulo" value="PODER JUDICIÁRIO"/>
         <property name="siga.relat.subtitulo" value="JUSTIÇA FEDERAL"/>
 
-        <property name="blucservice.endpoint" value="http://localhost:8080/blucservice/api/v1"/>
-        <property name="exservice.endpoint" value="http://localhost:8080/sigaex/servicos/ExService?wsdl"/>
-        <property name="exservice.qname" value="http://impl.service.ex.siga.jfrj.gov.br/"/>
-        <property name="exservice.servicename" value="ExService"/>
-        <property name="giservice.endpoint" value="http://localhost:8080/siga/servicos/GiService?wsdl"/>
-        <property name="giservice.qname" value="http://impl.service.gi.siga.jfrj.gov.br/"/>
-        <property name="giservice.servicename" value="GiService"/>
-        <property name="giservice.url" value="http://localhost:8080/siga/servicos/GiService"/>
-        <property name="graphviz.url" value="http://localhost:8080/vizservice/svg"/>
-        <property name="idp.jwt.modulo.cookie.domain" value=""/>
-        <property name="idp.jwt.modulo.pwd.sigaidp" value="***REPLACE-WITH-RANDOM-GUID***"/>
-        <property name="idp.jwt.modulo.timetoexpire" value="10000"/>
-        <property name="idp.jwt.modulo.timetorenew" value="5000"/>
-        <property name="isBaseTest" value="true"/>
-        <property name="isWorkflowEnabled" value="true"/>
-        <property name="org.apache.catalina.connector.URI_ENCODING" value="UTF-8"/>
-        <property name="org.apache.catalina.connector.USE_BODY_ENCODING_FOR_QUERY_STRING" value="true"/>
-        <property name="siga.base.url" value="http://localhost:8080"/>
-        <property name="siga.ex.assinador.externo.password" value="***REPLACE-WITH-RANDOM-GUID***"/>
-        <property name="siga.ex.assinador.externo.popup.url" value="https://ittrufusion.appspot.com"/>
-        <property name="siga.ex.autenticacao.pwd" value="***REPLACE-WITH-RANDOM-GUID***"/>
-        <property name="siga.ex.autenticacao.recaptcha.key" value="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"/>
-        <property name="siga.ex.autenticacao.recaptcha.pwd" value="6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"/>
-        <property name="siga.ex.classificacao.mascara.entrada" value="([0-9]{0,2})\.?([0-9]{0,2})?\.?([0-9]{0,2})?\.?([0-9]{0,2})?([A-Z])?"/>
-        <property name="siga.ex.classificacao.mascara.javascript" value="99.99.99.99"/>
-        <property name="siga.ex.classificacao.mascara.nomeNivel.0" value="NULL"/>
-        <property name="siga.ex.classificacao.mascara.nomeNivel.1" value="Assunto"/>
-        <property name="siga.ex.classificacao.mascara.nomeNivel.2" value="Classe"/>
-        <property name="siga.ex.classificacao.mascara.nomeNivel.3" value="Subclasse"/>
-        <property name="siga.ex.classificacao.mascara.nomeNivel.4" value="Atividade"/>
-        <property name="siga.ex.classificacao.mascara.saida" value="%1$02d.%2$02d.%3$02d.%4$02d"/>
-        <property name="siga.ex.conversor.html.factory" value="br.gov.jfrj.siga.ex.ext.ConversorHTMLFactory"/>
-        <property name="siga.ex.folha.de.rosto" value="inativa"/>
-        <property name="siga.ex.webdav.pwd" value="***REPLACE-WITH-RANDOM-GUID***"/>
-        <property name="siga.flyway.mysql.migrate" value="true"/>
-        <property name="siga.gi.layout" value="rj"/>
-        <property name="siga.gi.omitir.metodo2" value="false"/>
-        <property name="siga.gi.texto.login" value="&lt;p>XX é a sigla do seu órgão&lt;/p>&lt;p>99999 é o número da matrícula.&lt;/p>"/>
-        <property name="siga.gi.texto.novo.usuario" value="Bem vindo ao Siga-Doc!"/>
-        <property name="siga.hibernate.dialect.x" value="org.hibernate.dialect.Oracle10gDialect"/>
-        <property name="siga.hibernate.dialect" value="org.hibernate.dialect.MySQL57Dialect"/>
-        <property name="siga.pagina.inicial.urlxxx" value="../../sigaex/app/mesa"/>
-        <property name="siga.properties.versao" value="develop"/>
-        <property name="siga.qtdDiasDevolucao" value="5"/>
-        <property name="siga.sinc.password" value="***REPLACE-WITH-RANDOM-GUID***"/>
-        <property name="siga.url" value="http://localhost:8080/siga/"/>
-        <property name="sigaex.assinador.externo.password" value="***REPLACE-WITH-RANDOM-GUID***"/>
+        <property name="sigaex.carimbo.texto.superior" value="Justiça Federal"/>
+
         <property name="sigaex.redis.database" value="1"/>
         <property name="sigaex.redis.master.host" value="redisserver"/>
         <property name="sigaex.redis.master.port" value="6379"/>
-        <property name="sigaex.redis.password" value=""/>
+        <property name="sigaex.redis.password" value="***REPLACE-WITH-RANDOM-GUID***"/>
         <property name="sigaex.redis.slave.host" value="redisserver"/>
         <property name="sigaex.redis.slave.port" value="6379"/>
-        <property name="sigaex.upload.dir.temp" value="/var/user/temp"/>
-        <property name="sigaex.url" value="http://localhost:8080/sigaex/"/>
-        <property name="sigagc.url" value="http://localhost:8080/sigagc/app/"/>
-        <property name="sigaidp.crossdomain.url" value="http://localhost:8080"/>
-        <property name="sigasr.url" value="http://localhost:8080/sigasr/solicitacao/"/>
-        <property name="sigatp.url" value="http://localhost:8080/sigatp/"/>
-        <property name="sigawf.url" value="http://localhost:8080/sigawf/"/>
-        <property name="timestamp.system" value="siga-jfrj"/>
-        <property name="timestamp.url" value="https://ittrufusion.appspot.com/api/v1"/>
-        <property name="wfservice.endpoint" value="http://localhost:8080/sigawf/servicos/WfService?wsdl"/>
-        <property name="wfservice.qname" value="http://impl.service.wf.siga.jfrj.gov.br/"/>
-        <property name="wfservice.servicename" value="WfService"/>
-        <property name="xjus.jwt.secret" value="***REPLACE-WITH-RANDOM-GUID***"/>
-        <property name="xjus.password" value="***REPLACE-WITH-RANDOM-GUID***"/>
-        <property name="xjus.permalink.url" value="/siga/permalink/"/>
-        <property name="xjus.url" value="http://localhost:8888/api/v1/index/siga-doc/query"/>
-        <property name="servidor.smtp" value="emailserver"/>
-        <property name="servidor.smtp.porta" value="1025"/>
-        <property name="servidor.smtp.auth" value="true"/>
-        <property name="servidor.smtp.auth.usuario" value="siga"/>
-        <property name="servidor.smtp.auth.senha" value="siga"/>
-        <property name="servidor.smtp.debug" value="false"/>
-        <property name="servidor.smtp.usuario.remetente" value="Administrador do Siga&lt;siga@exemplo.com.br>"/>
-        <property name="siga.ex.email.baseTeste" value="Obs. Mensagem enviada pelo sistema de testes. Favor desconsiderar."/>
+
+        <property name="siga.smtp" value="emailserver"/>
+        <property name="siga.smtp.porta" value="1025"/>
+        <property name="siga.smtp.auth" value="true"/>
+        <property name="siga.smtp.auth.usuario" value="siga"/>
+        <property name="siga.smtp.auth.senha" value="siga"/>
+        <property name="siga.smtp.debug" value="false"/>
+        <property name="siga.smtp.usuario.remetente" value="Administrador do Siga&lt;siga@exemplo.com.br>"/>
+
+        <property name="siga.armazenamento.arquivo.tipo" value="TABELA"/>
+        <property name="sigaex.upload.dir.temp" value="/tmp"/>
+
+        <property name="siga.flyway.mysql.migrate" value="true"/>
+        <property name="siga.hibernate.dialect" value="org.hibernate.dialect.MySQL8Dialect"/>
+
+        <property name="sigaex.assinador.externo.popup.url" value="https://ittrufusion.appspot.com"/>
+
+        <property name="sigaex.carimbo.sistema" value="siga-docker"/>
+        <property name="sigaex.carimbo.url" value="https://ittrufusion.appspot.com/api/v1"/>
+        <property name="sigaex.carimbo.public.key" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAllav1+eJ3w5Idge/vQ1zZSziGiuOUBviZhcw0JZ9Bg90zG7Uz3wFGQeKnG0DNTBKwjC3MHI7AZy4G+ji35J+gp+0aZLDkuwx17JDuJfuJe6gHRlfcm50McuLL0vaU5gQ2InAo7FssjuOuLp9c3FGBGmiDFK1vUhKwdvY14inYzrZaHSVsppSYX9zjnhQiQxRnLzFzkZsZkl/Orz2O9rvmJx048lcmnOiLvm3ge7Jq2KZHIYzdsw5F3VGtlhLFBZ49g6Rmp4ClgPtpwDOGj78oyJVxLW3XXN1VP1JnActFkNlmBNi+8cUZ8IX15j+FDOL9+tQR+FMC7wtHypshR5zVQIDAQAB"/>
     </system-properties>
     <management>
         <security-realms>

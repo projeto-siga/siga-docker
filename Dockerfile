@@ -41,7 +41,7 @@ RUN echo "downloading vizservice.war" && curl -s https://api.github.com/repos/pr
 RUN mv vizservice.war ${JBOSS_HOME}/standalone/deployments/
 
 #--- DOWNLOAD LATEST VERSION FROM GITHUB
-RUN echo "downloading siga.war, sigaex.war and sigawf.war" && curl -s https://api.github.com/repos/projeto-siga/siga/releases/29414996 \
+RUN echo "downloading siga.war, sigaex.war, siga-le.war and sigawf.war" && curl -s https://api.github.com/repos/projeto-siga/siga/releases/38253920 \
   | grep browser_download_url \
   | grep .war \
   | cut -d '"' -f 4 \
@@ -51,7 +51,9 @@ RUN echo "downloading siga.war, sigaex.war and sigawf.war" && curl -s https://ap
 RUN mv siga.war ${JBOSS_HOME}/standalone/deployments/
 RUN mv sigaex.war ${JBOSS_HOME}/standalone/deployments/
 RUN mv sigawf.war ${JBOSS_HOME}/standalone/deployments/
+RUN mv siga-le.war ${JBOSS_HOME}/standalone/deployments/
 
+#--- ou copie diretamente do diretório siga-docker para fins de debug
 # COPY --chown=jboss ./*.war ${JBOSS_HOME}/standalone/deployments/
 
 COPY --chown=jboss ./standalone.xml ${JBOSS_HOME}/standalone/configuration/standalone.xml
