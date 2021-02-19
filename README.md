@@ -174,11 +174,10 @@ As propriedades abaixo configuram o Siga para utilizar como provedor de assinatu
 Além de produzir assinaturas digitais com certificado, o Ittru Fusion também será utilizado para gerar hashs de validação para as assinaturas com senha. Uma alternativa ao Ittru Fusion é a instalação do [Assijus](https://github.com/assijus/assijus), um componente open-source com as mesmas funcionalidades, mas que não é simples de ser instalado e requer configuração que só pode ser realizada pelo TRF2.
 
 ```XML
-    <property name="sigaex.assinador.externo.popup.url" value="https://ittrufusion.appspot.com"/>
-
-    <property name="sigaex.carimbo.sistema" value="siga-docker"/>
-    <property name="sigaex.carimbo.url" value="https://ittrufusion.appspot.com/api/v1"/>
-    <property name="sigaex.carimbo.public.key" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAllav1+eJ3w5Idge/vQ1zZSziGiuOUBviZhcw0JZ9Bg90zG7Uz3wFGQeKnG0DNTBKwjC3MHI7AZy4G+ji35J+gp+0aZLDkuwx17JDuJfuJe6gHRlfcm50McuLL0vaU5gQ2InAo7FssjuOuLp9c3FGBGmiDFK1vUhKwdvY14inYzrZaHSVsppSYX9zjnhQiQxRnLzFzkZsZkl/Orz2O9rvmJx048lcmnOiLvm3ge7Jq2KZHIYzdsw5F3VGtlhLFBZ49g6Rmp4ClgPtpwDOGj78oyJVxLW3XXN1VP1JnActFkNlmBNi+8cUZ8IX15j+FDOL9+tQR+FMC7wtHypshR5zVQIDAQAB"/>
+<property name="sigaex.assinador.externo.popup.url" value="https://ittrufusion.appspot.com"/>
+<property name="sigaex.carimbo.sistema" value="siga-docker"/>
+<property name="sigaex.carimbo.url" value="https://ittrufusion.appspot.com/api/v1"/>
+<property name="sigaex.carimbo.public.key" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAllav1+eJ3w5Idge/vQ1zZSziGiuOUBviZhcw0JZ9Bg90zG7Uz3wFGQeKnG0DNTBKwjC3MHI7AZy4G+ji35J+gp+0aZLDkuwx17JDuJfuJe6gHRlfcm50McuLL0vaU5gQ2InAo7FssjuOuLp9c3FGBGmiDFK1vUhKwdvY14inYzrZaHSVsppSYX9zjnhQiQxRnLzFzkZsZkl/Orz2O9rvmJx048lcmnOiLvm3ge7Jq2KZHIYzdsw5F3VGtlhLFBZ49g6Rmp4ClgPtpwDOGj78oyJVxLW3XXN1VP1JnActFkNlmBNi+8cUZ8IX15j+FDOL9+tQR+FMC7wtHypshR5zVQIDAQAB"/>
 ```
 
 ## Executando o Siga numa Instalação Própria do JBoss
