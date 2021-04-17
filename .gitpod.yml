@@ -9,8 +9,7 @@ tasks:
     prebuild: |
       sudo docker-up       
     command: |
-      docker-compose up
-      gp await-port 8080 && gp preview $(gp url 8080)
+      docker-compose up && gp await-port 8080 && gp preview $(gp url 8080)
  
 github:
   prebuilds:
