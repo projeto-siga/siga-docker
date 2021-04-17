@@ -56,4 +56,12 @@ RUN mv sigawf.war ${JBOSS_HOME}/standalone/deployments/
 
 COPY --chown=jboss ./standalone.xml ${JBOSS_HOME}/standalone/configuration/standalone.xml
 
+RUN mkdir  bin
+
+COPY bin/wait-for-it.sh bin/wait-for-it.sh
+
+RUN sudo chmod +x bin/wait-for-it.sh
+
+
+
 EXPOSE 8080
