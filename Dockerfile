@@ -60,7 +60,7 @@ COPY --chown=jboss ./standalone.xml ${JBOSS_HOME}/standalone/configuration/stand
 
 RUN mkdir  bin
 
-COPY bin/wait-for-it.sh bin/wait-for-it.sh
+COPY ./wait-for-it.sh bin/wait-for-it.sh
 
 RUN sudo chmod +x bin/wait-for-it.sh
 
