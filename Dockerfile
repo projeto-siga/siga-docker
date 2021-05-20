@@ -41,7 +41,7 @@ RUN echo "downloading vizservice.war" && curl -s https://api.github.com/repos/pr
 RUN mv vizservice.war ${JBOSS_HOME}/standalone/deployments/
 
 #--- DOWNLOAD LATEST VERSION FROM GITHUB
-RUN echo "downloading siga.war, sigaex.war, siga-le.war and sigawf.war" && curl -s https://api.github.com/repos/projeto-siga/siga/releases/38253920 \
+RUN echo "downloading siga.war, sigaex.war, siga-le.war and sigawf.war" && curl -s https://api.github.com/repos/projeto-siga/siga/releases/latest \
   | grep browser_download_url \
   | grep .war \
   | cut -d '"' -f 4 \
