@@ -56,14 +56,12 @@ RUN mv siga-le.war ${JBOSS_HOME}/standalone/deployments/
 #--- ou copie diretamente do diretório siga-docker para fins de debug
 # COPY --chown=jboss ./*.war ${JBOSS_HOME}/standalone/deployments/
 
+#--- COPIANDO standalone.xml ---
 COPY --chown=jboss ./standalone.xml ${JBOSS_HOME}/standalone/configuration/standalone.xml
 
+#--- COPIANDO wait-for-it.sh ---
 RUN mkdir  bin
-
 COPY ./wait-for-it.sh bin/wait-for-it.sh
-
 RUN sudo chmod +x bin/wait-for-it.sh
-
-
 
 EXPOSE 8080
