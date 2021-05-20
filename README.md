@@ -1,3 +1,5 @@
+[![Abrir no Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/projeto-siga/siga-docker)
+
 ## Instalação com Docker-Compose
 
 Este repositório contém os artefatos necessários para executar o Siga-Doc utilizando o Docker.

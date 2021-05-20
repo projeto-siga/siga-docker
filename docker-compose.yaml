@@ -6,9 +6,10 @@ services:
     container_name: appserver
     build: .
     depends_on:
-      - mysqlserver
+      - mysqlserver      
       - redisserver
-      - emailserver
+      - emailserver    
+    command: ["bin/wait-for-it.sh mysqlserver:3306 -t 120 && jboss-eap-7.2/bin/standalone.sh"] 
     ports:
       - "8080:8080"
     environment:
