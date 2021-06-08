@@ -1,5 +1,13 @@
 [![Abrir no Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/projeto-siga/siga-docker)
 
+## Instalação com Gitpod
+
+A maneira mais simples de ver o Siga-Doc funcionando é utilizar o Gitpod. Este serviço online consegue executar o Siga-Doc e funciona muito bem para quem está interessado em conhecer o sistema. O Gitpod é um serviço pago, mas oferece algumas horas por mês de gratuidade. Veja o passo a passo da instalação no vídeo abaixo:
+
+https://www.youtube.com/watch?v=pBmXXly1g70
+
+Para instalar em um ambiente de produção, siga as instruções a seguir.
+
 ## Instalação com Docker-Compose
 
 Este repositório contém os artefatos necessários para executar o Siga-Doc utilizando o Docker.
