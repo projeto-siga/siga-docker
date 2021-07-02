@@ -39,7 +39,7 @@
     <system-properties>
         <property name="siga.jwt.secret" value="***REPLACE-WITH-RANDOM-GUID***"/>
         <property name="siga.sinc.password" value="***REPLACE-WITH-RANDOM-GUID***"/>
-        <property name="sigaex.webdav.senha" value="***REPLACE-WITH-RANDOM-GUID***"/>
+        <!-- <property name="sigaex.webdav.senha" value="***REPLACE-WITH-RANDOM-GUID***"/> (desabilitado porque estamos com problemas no webdav) -->
 
         <property name="siga.recaptcha.key" value="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"/>
         <property name="siga.recaptcha.pwd" value="6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"/>
