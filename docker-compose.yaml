@@ -30,7 +30,7 @@ services:
     ports:
       - 5001:3306
     environment:
-      TZ: "America/Denver"
+      TZ: "America/Sao_Paulo"
       MYSQL_ROOT_PASSWORD: "siga"
       MYSQL_ROOT_HOST: "%"
     volumes:
