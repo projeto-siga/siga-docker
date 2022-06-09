@@ -6,7 +6,7 @@ tasks:
   - name: docker-up
     command: sudo docker-up
   - name: Set Base Url do Siga
-    command: sed -i "s|localhost:8080|$GITPOD_WORKSPACE_URL|" standalone.xml
+    command: sed -i "s|http://localhost:8080|$GITPOD_WORKSPACE_URL|" standalone.xml
   - name: sigadoc-starter
     prebuild: |
       sudo docker-up       
