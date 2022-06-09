@@ -37,6 +37,7 @@
         <extension module="org.wildfly.extension.undertow"/>
     </extensions>
     <system-properties>
+        <property name="siga.base.url" value="http://localhost:8080"/>
         <property name="siga.jwt.secret" value="***REPLACE-WITH-RANDOM-GUID***"/>
         <property name="siga.sinc.password" value="***REPLACE-WITH-RANDOM-GUID***"/>
         <!-- <property name="sigaex.webdav.senha" value="***REPLACE-WITH-RANDOM-GUID***"/> (desabilitado porque estamos com problemas no webdav) -->
