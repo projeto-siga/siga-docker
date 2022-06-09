@@ -6,7 +6,7 @@ tasks:
   - name: docker-up
     command: sudo docker-up
   - name: Set CKEditor Url do Siga
-    command: sed -i "s|http://localhost:8080/ckeditor/ckeditor/ckeditor.js|$GITPOD_WORKSPACE_URL/ckeditor/ckeditor/ckeditor.js|" standalone.xml
+    command: sed -i "s|http://localhost:8080/ckeditor/ckeditor/ckeditor.js|${GITPOD_WORKSPACE_URL/https:\/\//https://8080-}/ckeditor/ckeditor/ckeditor.js|" standalone.xml
   - name: sigadoc-starter
     prebuild: |
       sudo docker-up       
