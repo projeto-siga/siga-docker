@@ -8,9 +8,9 @@ tasks:
   - name: Set Siga environment variable
     env:
       PROP_SIGA_BASE_URL: $GITPOD_WORKSPACE_URL
-    command: gp env JAVA_TOOL_OPTIONS="$JAVA_TOOL_OPTIONS -Dsiga.base.url=$PROP_SIGA_BASE_URL"
+    command: sed -i 's/http\:\/\/localhost:8080/$GITPOD_WORKSPACE_URL/' standalone.xml
   - name: sigadoc-starter
-    prebuild: |
+    init: |
       sudo docker-up       
     command: |
       docker-compose up && gp await-port 8080 && gp preview $(gp url 8080)
