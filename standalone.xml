@@ -81,7 +81,7 @@
 
         <property name="sigaex.assinador.externo.popup.url" value="https://ittrufusion.appspot.com"/>
         
-        <property name="siga.base.url" value="http://localhost:8080"/>
+        <property name="ckeditor.url" value="http://localhost:8080/ckeditor/ckeditor/ckeditor.js"/>
 
         <property name="sigaex.carimbo.sistema" value="siga-docker"/>
         <property name="sigaex.carimbo.url" value="https://ittrufusion.appspot.com/api/v1"/>
