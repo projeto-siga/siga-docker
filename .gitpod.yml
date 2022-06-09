@@ -5,9 +5,10 @@ image: gitpod/workspace-full
 tasks:
   - name: docker-up
     command: sudo docker-up
-  - name: sigadoc-starter
+  - name: Set Siga environment variable
     env:
-      PROP_SIGA_BASE_URL: "$GITPOD_WORKSPACE_URL"
+      PROP_SIGA_BASE_URL: $GITPOD_WORKSPACE_URL
+  - name: sigadoc-starter
     prebuild: |
       sudo docker-up       
     command: |
