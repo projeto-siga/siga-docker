@@ -247,6 +247,51 @@
                         <idle-timeout-minutes>5</idle-timeout-minutes>
                     </timeout>
                 </datasource>
+				<datasource jndi-name="java:/jboss/datasources/SigaSrDS" pool-name="SigaSrDS" enabled="true" spy="true">
+                    <connection-url>jdbc:mysql://mysqlserver:3306/sigasr?noAccessToProcedureBodies=true</connection-url>
+                    <driver>mysql.jar</driver>
+                    <pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                    </pool>
+                    <security>
+                        <user-name>root</user-name>
+                        <password>siga</password>
+                    </security>
+                    <timeout>
+                        <idle-timeout-minutes>5</idle-timeout-minutes>
+                    </timeout>
+                </datasource>
+				<datasource jndi-name="java:/jboss/datasources/SigaGcDS" pool-name="SigaGcDS" enabled="true" spy="true">
+                    <connection-url>jdbc:mysql://mysqlserver:3306/sigagc?noAccessToProcedureBodies=true</connection-url>
+                    <driver>mysql.jar</driver>
+                    <pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                    </pool>
+                    <security>
+                        <user-name>root</user-name>
+                        <password>siga</password>
+                    </security>
+                    <timeout>
+                        <idle-timeout-minutes>5</idle-timeout-minutes>
+                    </timeout>
+                </datasource>
+				<datasource jndi-name="java:/jboss/datasources/SigaTpDS" pool-name="SigaTpDS" enabled="true" spy="true">
+                    <connection-url>jdbc:mysql://mysqlserver:3306/sigatp?noAccessToProcedureBodies=true</connection-url>
+                    <driver>mysql.jar</driver>
+                    <pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                    </pool>
+                    <security>
+                        <user-name>root</user-name>
+                        <password>siga</password>
+                    </security>
+                    <timeout>
+                        <idle-timeout-minutes>5</idle-timeout-minutes>
+                    </timeout>
+                </datasource>
                 <drivers>
                     <driver name="h2" module="com.h2database.h2">
                         <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
