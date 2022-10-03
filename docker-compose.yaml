@@ -12,6 +12,8 @@ services:
     command: ["bin/wait-for-it.sh mysqlserver:3306 -t 120 && jboss-eap-7.2/bin/standalone.sh"] 
     ports:
       - "8080:8080"
+      #- "9990:9990"
+      #- "8787:8787"
     environment:
       TZ: "America/Sao_Paulo"
       JBOSS_USER: "root"
