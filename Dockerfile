@@ -59,7 +59,7 @@ RUN mv sigaex.war ${JBOSS_HOME}/standalone/deployments/
 RUN mv sigawf.war ${JBOSS_HOME}/standalone/deployments/
 RUN mv sigasr.war ${JBOSS_HOME}/standalone/deployments/
 RUN mv sigagc.war ${JBOSS_HOME}/standalone/deployments/
-#-- RUN mv sigatp.war ${JBOSS_HOME}/standalone/deployments/
+RUN mv sigatp.war ${JBOSS_HOME}/standalone/deployments/
 RUN mv siga-le.war ${JBOSS_HOME}/standalone/deployments/
 
 #--- ou copie diretamente do diretório siga-docker para fins de debug
