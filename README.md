@@ -197,3 +197,21 @@ que tem um número relativamente pequeno de funcionários. Caso haja necessidade
 necessário substituir essa única instância de servidor de aplicação por um cluster. Nesse caso, não é recomendado utilizar
 a implantação em modo `standalone`. Para montar um servidor JBoss do zero, siga o passo a passo descrito no arquivo
 `siga-docker/Dockerfile`.
+
+## Solução de contorno
+
+Caso encontre erro ': No such file or directoryecute 'bash 127 seguir passos abaixo
+
+- git config --global core.autocrlf false
+
+- clone o repositorio novamente
+
+- refaça a operação 
+
+    $ docker-compose build --no-cache
+
+    $ docker-compose up
+
+
+
+
