@@ -190,6 +190,55 @@ Além de produzir assinaturas digitais com certificado, o Ittru Fusion também s
 <property name="sigaex.carimbo.public.key" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAllav1+eJ3w5Idge/vQ1zZSziGiuOUBviZhcw0JZ9Bg90zG7Uz3wFGQeKnG0DNTBKwjC3MHI7AZy4G+ji35J+gp+0aZLDkuwx17JDuJfuJe6gHRlfcm50McuLL0vaU5gQ2InAo7FssjuOuLp9c3FGBGmiDFK1vUhKwdvY14inYzrZaHSVsppSYX9zjnhQiQxRnLzFzkZsZkl/Orz2O9rvmJx048lcmnOiLvm3ge7Jq2KZHIYzdsw5F3VGtlhLFBZ49g6Rmp4ClgPtpwDOGj78oyJVxLW3XXN1VP1JnActFkNlmBNi+8cUZ8IX15j+FDOL9+tQR+FMC7wtHypshR5zVQIDAQAB"/>
 ```
 
+### Utilizando o Assijus como Provedor de Assinaturas para o Siga-Doc
+
+Para utilizar o provedor de assinaturas digitais Assijus serão necessárias configurações tanto no Siga-Doc quanto no próprio Assijus. Abaixo, exemplificaremos com uma configuração para ambos funcionarem em ```localhost:8080```. Para uma instalação real, será necessário trocar o ```localhost:8080``` pelo nome do domínio escolhido, além de trocar de ```http``` para ```https```.
+
+Caso o Assijus esteja funcionando com a configuração do docker-compose, conforme indicado no repositório [assijus-docker](https://github.com/assijus/assijus-docker), utilizar os parâmetros:
+
+```
+PROP_ASSIJUS_REDIS_MASTER_HOST: redis
+PROP_ASSIJUS_REDIS_MASTER_PORT: 6379
+PROP_ASSIJUS_REDIS_SLAVE_HOST:
+PROP_ASSIJUS_REDIS_SLAVE_PORT:
+PROP_ASSIJUS_REDIS_PASSWORD:
+PROP_ASSIJUS_REDIS_DATABASE: 1
+PROP_ASSIJUS_BLUCSERVICE_URL: http://bluc:8080/blucservice/api/v1
+PROP_ASSIJUS_POPUP_URLS: http://localhost:8080
+PROP_ASSIJUS_SYSTEMS: siga
+PROP_ASSIJUS_SIGA_URL: http://localhost:8080/sigaex/public/app/assinador-externo
+PROP_ASSIJUS_SIGA_PASSWORD: substitua esse texto por uma GUID aleatória para proteger o testsigner
+PROP_ASSIJUS_TIMESTAMP_PUBLIC_KEY: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAygIvgZgIoY+uE+Y/gD7i8ERJrjNUQkSHhZu5nSwvxOaPnmKbRDiUmPii9CmeMHKqDCgmLIa2V2jidcBXDq8ncOsd97cDJIvvaFs2buVUYm71qpeqYJZzrl28E+i1e230PKnXHdUtKVR0vFkuBnpnUBABsFaWKohXSUOSq4KCq6Zr9LFcxXYQWjhiSmD860i+PSjvAorLW1y8PiZGsMnOc/ZJmnZLtgMrADskDmwiVIKK56cKJL/dry/orTid6sLL4vXXTO2LtGtEl5/Ot1wv0VuyO6e3PuuuH6xRSsMGWZd68VgEbiMvNAVzb3svE0seHp9/VjrzV8Ot8i0egPkkEwIDAQAB
+PROP_ASSIJUS_TIMESTAMP_PRIVATE_KEY: MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDKAi+BmAihj64T5j+APuLwREmuM1RCRIeFm7mdLC/E5o+eYptEOJSY+KL0KZ4wcqoMKCYshrZXaOJ1wFcOrydw6x33twMki+9oWzZu5VRibvWql6pglnOuXbwT6LV7bfQ8qdcd1S0pVHS8WS4GemdQEAGwVpYqiFdJQ5KrgoKrpmv0sVzFdhBaOGJKYPzrSL49KO8CistbXLw+Jkawyc5z9kmadku2AysAOyQObCJUgornpwokv92vL+itOJ3qwsvi9ddM7Yu0a0SXn863XC/RW7I7p7c+664frFFKwwZZl3rxWARuIy80BXNvey8TSx4en39WOvNXw63yLR6A+SQTAgMBAAECggEBAImro6S2cGtq+EAnku9b7F3CrFRENxBSk+nCj2VGT+fpGcffe+GqjdsS2Dt+gYiTHMDcO+fshyhbGrsVMj+Xr1GNawb/euzVUXvVbet172SGKnbwlfTtlDkpOJx44/YSoXkWZry2I+ke3c/fFzbjBLXTstLyr7Sc5p/PpY2tjFBeDLXv/CE7IEyHLWQXuCAmAEn7ZfJT3e2NoIWIFxmJCqIthDxKuH0Mug6L46VGoCH+VP6lGxtVec2+WHhWFIbwmGoGa7B8rZbKFhN+3YS/IdN1LPuNXw5Lk1NT7kAVqx2odUdt+SBJsY3n6k1XH5KAxi6uOu6zygVnSx4mVC/esUECgYEA7l4DRSno8JYjoQvv/hVmQyF6sQ73WMbJXmKeKriyhOeOmSkhPNvQao2hkrNGgS0TobhBlyp+2p3YBmfQGICFxrKlsSfTULaUVCFeOJh/BZQ0ky4Y1gQ75uQQNZuWrRTomgBtvxyeI1OBcG/C8ufVDWM11BvvZz87+J7Sy3+fcUUCgYEA2POk3SMwrLi2YJykGRB/Ba1tf05DhgOcxxK8Ww3e3RYl5gj5yD1B+vAc1XEZCN7+WKwbEJLOHpt0AJZ8TU6yaKz+0Wn45+5XzjkmqiNI+YcTCPKJdEKmajPRp+1T/l4cf12RuXmr0/Akrl59mys63VVdDMaReDwDX0X0j9z42XcCgYEA55SQysY/2FWVgeYuIIU71+aT46ctqaNfigJ3tfvA/JxXDvhFoXHRl2PIYNUpn2Bi3VA88RdJLS4C7Z44L0XWMkfn8ChIBfeMPfw5JPULGyl0trUnTe3JILXcBakGh1tz7AKUnQK5pIqBi/IYzZNsitgjONJ3EbD+m7n6A9kW150CgYApPL6EjhDNc9quqHeEkB8kzB85CH5LNdqR+Fy3Df7jlTck72XTCtnEwekpJPM2PXSpFCWc09q79J5rEi+UXjYJMYDJ+1OleidUeoZ/5m8Thvo2RCueXqDVJP5f5fuGKQtPplBxqc/gXBAM2McVPHVW5sfmCsRRz05wyJJA2iau5wKBgCGFxx8waki0Q5vLWyTNu206zUDzeZsOWiogfd73bNkQ/r7Pz3t9SN+DqgsQzGL7UhOflUN9F1Rt5ef2Fz6/0zHc5M9qzPGSyFpggQrOodvStvDKdBocNXOoTQfelj+rTaplX6OcWutZLTnNOp/euujvnsvv5cCvEfPg1TlvF8GW
+```
+
+Se o Assijus estiver instalado no mesmo servidor JBoss que o Siga-Doc, e que seus parâmetros de configuração estiverem no mesmo ```standalone.xml```, utilizar:
+
+```XML
+<property name="assijus.redis.master.host" value="redis"/>
+<property name="assijus.redis.master.port" value="6379"/>
+<property name="assijus.redis.database" value="1"/>
+<property name="assijus.blucservice.url" value="http://bluc:8080/blucservice/api/v1"/>
+<property name="assijus.popup.urls" value="http://localhost:8080"/>
+<property name="assijus.systems" value="siga"/>
+<property name="assijus.siga.url" value=" http://localhost:8080/sigaex/public/app/assinador-externo"/>
+<property name="assijus.siga.password" value="substitua esse texto por uma GUID aleatória para proteger o testsigner"/>
+<property name="assijus.timestamp.public.key" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAygIvgZgIoY+uE+Y/gD7i8ERJrjNUQkSHhZu5nSwvxOaPnmKbRDiUmPii9CmeMHKqDCgmLIa2V2jidcBXDq8ncOsd97cDJIvvaFs2buVUYm71qpeqYJZzrl28E+i1e230PKnXHdUtKVR0vFkuBnpnUBABsFaWKohXSUOSq4KCq6Zr9LFcxXYQWjhiSmD860i+PSjvAorLW1y8PiZGsMnOc/ZJmnZLtgMrADskDmwiVIKK56cKJL/dry/orTid6sLL4vXXTO2LtGtEl5/Ot1wv0VuyO6e3PuuuH6xRSsMGWZd68VgEbiMvNAVzb3svE0seHp9/VjrzV8Ot8i0egPkkEwIDAQAB"/>
+<property name="assijus.timestamp.private.key" value="MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDKAi+BmAihj64T5j+APuLwREmuM1RCRIeFm7mdLC/E5o+eYptEOJSY+KL0KZ4wcqoMKCYshrZXaOJ1wFcOrydw6x33twMki+9oWzZu5VRibvWql6pglnOuXbwT6LV7bfQ8qdcd1S0pVHS8WS4GemdQEAGwVpYqiFdJQ5KrgoKrpmv0sVzFdhBaOGJKYPzrSL49KO8CistbXLw+Jkawyc5z9kmadku2AysAOyQObCJUgornpwokv92vL+itOJ3qwsvi9ddM7Yu0a0SXn863XC/RW7I7p7c+664frFFKwwZZl3rxWARuIy80BXNvey8TSx4en39WOvNXw63yLR6A+SQTAgMBAAECggEBAImro6S2cGtq+EAnku9b7F3CrFRENxBSk+nCj2VGT+fpGcffe+GqjdsS2Dt+gYiTHMDcO+fshyhbGrsVMj+Xr1GNawb/euzVUXvVbet172SGKnbwlfTtlDkpOJx44/YSoXkWZry2I+ke3c/fFzbjBLXTstLyr7Sc5p/PpY2tjFBeDLXv/CE7IEyHLWQXuCAmAEn7ZfJT3e2NoIWIFxmJCqIthDxKuH0Mug6L46VGoCH+VP6lGxtVec2+WHhWFIbwmGoGa7B8rZbKFhN+3YS/IdN1LPuNXw5Lk1NT7kAVqx2odUdt+SBJsY3n6k1XH5KAxi6uOu6zygVnSx4mVC/esUECgYEA7l4DRSno8JYjoQvv/hVmQyF6sQ73WMbJXmKeKriyhOeOmSkhPNvQao2hkrNGgS0TobhBlyp+2p3YBmfQGICFxrKlsSfTULaUVCFeOJh/BZQ0ky4Y1gQ75uQQNZuWrRTomgBtvxyeI1OBcG/C8ufVDWM11BvvZz87+J7Sy3+fcUUCgYEA2POk3SMwrLi2YJykGRB/Ba1tf05DhgOcxxK8Ww3e3RYl5gj5yD1B+vAc1XEZCN7+WKwbEJLOHpt0AJZ8TU6yaKz+0Wn45+5XzjkmqiNI+YcTCPKJdEKmajPRp+1T/l4cf12RuXmr0/Akrl59mys63VVdDMaReDwDX0X0j9z42XcCgYEA55SQysY/2FWVgeYuIIU71+aT46ctqaNfigJ3tfvA/JxXDvhFoXHRl2PIYNUpn2Bi3VA88RdJLS4C7Z44L0XWMkfn8ChIBfeMPfw5JPULGyl0trUnTe3JILXcBakGh1tz7AKUnQK5pIqBi/IYzZNsitgjONJ3EbD+m7n6A9kW150CgYApPL6EjhDNc9quqHeEkB8kzB85CH5LNdqR+Fy3Df7jlTck72XTCtnEwekpJPM2PXSpFCWc09q79J5rEi+UXjYJMYDJ+1OleidUeoZ/5m8Thvo2RCueXqDVJP5f5fuGKQtPplBxqc/gXBAM2McVPHVW5sfmCsRRz05wyJJA2iau5wKBgCGFxx8waki0Q5vLWyTNu206zUDzeZsOWiogfd73bNkQ/r7Pz3t9SN+DqgsQzGL7UhOflUN9F1Rt5ef2Fz6/0zHc5M9qzPGSyFpggQrOodvStvDKdBocNXOoTQfelj+rTaplX6OcWutZLTnNOp/euujvnsvv5cCvEfPg1TlvF8GW"/>
+```
+
+No ```standalone.xml``` do Siga, introduza as seguintes configurações:
+
+```XML
+<property name="sigaex.assinador.externo.popup.url" value="http://localhost:8080/assijus"/>
+<property name="sigaex.assinador.externo.password" value="substitua esse texto por uma GUID aleatória para proteger o testsigner"/>
+<property name="sigaex.carimbo.sistema" value="siga-docker"/>
+<property name="sigaex.carimbo.url" value="http://localhost:8080/assijus/api/v1"/>
+<property name="sigaex.carimbo.public.key" value="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAygIvgZgIoY+uE+Y/gD7i8ERJrjNUQkSHhZu5nSwvxOaPnmKbRDiUmPii9CmeMHKqDCgmLIa2V2jidcBXDq8ncOsd97cDJIvvaFs2buVUYm71qpeqYJZzrl28E+i1e230PKnXHdUtKVR0vFkuBnpnUBABsFaWKohXSUOSq4KCq6Zr9LFcxXYQWjhiSmD860i+PSjvAorLW1y8PiZGsMnOc/ZJmnZLtgMrADskDmwiVIKK56cKJL/dry/orTid6sLL4vXXTO2LtGtEl5/Ot1wv0VuyO6e3PuuuH6xRSsMGWZd68VgEbiMvNAVzb3svE0seHp9/VjrzV8Ot8i0egPkkEwIDAQAB"/>
+```
+
+**Atenção!** As chaves públicas e privadas acima são apenas para fins de testes. Para levar o sistema para produção, é necessários gerar chaves conforme descrito na [documentação](https://github.com/assijus/assijus-docker#prop_assijus_timestamp_public_key-e-prop_assijus_timestamp_private_key) do assijus-docker. Não se esqueça de substituir os campos "password" por um UUID gerado aleatóriamente, mas lembre-se que a "password" tem que ser a mesma na configuração do Assijus e do Siga-Doc, para que eles consigam se comunicar.
+
 ## Executando o Siga numa Instalação Própria do JBoss
 
 A configuração oferecida neste repositório funciona perfeitamente e pode ser utilizada em ambiente de produção por empresas
@@ -211,7 +260,3 @@ Caso encontre erro ': No such file or directoryecute 'bash 127 seguir passos aba
     $ docker-compose build --no-cache
 
     $ docker-compose up
-
-
-
-
