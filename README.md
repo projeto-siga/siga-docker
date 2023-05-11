@@ -1,4 +1,4 @@
-[![Abrir no Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/projeto-siga/siga-docker)
+[![Abrir no Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://projeto-siga.github.io/siga-docker/)
 
 ## Instalação com Gitpod
 
