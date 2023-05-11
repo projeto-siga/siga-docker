@@ -1,0 +1,52 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #f0f0f0;
+}
+mobile-device{
+}
+.form-gitpod {
+  z-index: 2;
+}
+
+.form-button{
+margin-top: 20px;
+}
+
+.form-label{
+text-align: left;
+float: left;
+}
+
+.card-top {
+	border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+
+.nav-top{
+	border-top-right-radius: 4px !important;
+border-top-left-radius: 4px !important;
+}
+
+.img-top{
+margin-left: 20px;
+}
+
+
+.form-gitpod input[type="text"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 1;
+  border-bottom-left-radius: 1;
+    border-top-left-radius: 1;
+  border-top-right-radius: 1;
+}
+
+
+

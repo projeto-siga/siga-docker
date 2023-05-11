@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ptbr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Projeto Siga">
+    <title>Siga-Docker GitPod</title>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/docs.css" rel="stylesheet">
+    <link href="assets/css/gitpod.css" rel="stylesheet">
+    <script src="assets/js/jquery-3.6.4.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/docsearch.min.js"></script>
+    <script>
+        function getPageBranch(page) {
+            $.get("https://api.github.com/repos/projeto-siga/siga/branches?per_page=100&page=" + page, function (res) {
+                var dataList = $("#searchresults");
+
+                if (res.length ) {
+                    for (var i = 0, len = res.length; i < len; i++) {
+                        var opt = $("<option></option>").attr("value", res[i]['name']);
+                        dataList.append(opt);
+                    }
+
+                }
+            }, "json");
+        }
+
+
+
+        function abrirProjetoGitPod() {
+            var branch = document.getElementById('search').value
+            var urlRepo = "https://github.com/projeto-siga/siga-docker"
+            if(branch === "") branch = 'master'
+
+            window.open("https://gitpod.io/#GITPOD_BRANCH="+encodeURIComponent(branch)+"/"+urlRepo)
+        }
+
+        function loadButton()
+        {
+            setTimeout(function(){
+
+                $("#btnBusca").prop('disabled', false);
+                $("#spLoading").hide();
+                $("#spLoadingMsg").html("Abrir no GitPod")
+            }, 1000);
+
+        }
+
+
+        $(document).ready(function () {
+
+            if (document.createElement("datalist").options) {
+
+                for (var i = 1; i < 4; i++) getPageBranch(i)
+
+                loadButton()
+            }
+
+        })
+
+
+    </script>
+</head>
+<body class="text-center">
+<main class="form-gitpod w-50 m-auto">
+    <div class="navbar navbar-expand-lg navbar-dark bg-primary bg-primary nav-top">
+        <img class="mb-4 img-top" src="assets/logo-siga-novo-38px.png" alt="" width="80" height="auto">
+    </div>
+    <form>
+        <div class="card card-top">
+            <h5 class="card-header">Integração Siga-Docker GitPod</h5>
+            <div class="card-body">
+                <div >
+                    <label  class="form-label" for="search">Escolha o branch desejado</label>
+                    <input class="form-control" list="searchresults"  name="search" id="search"  list="searchresults" autocomplete="true" placeholder="master">
+                    <datalist id="searchresults"></dataList>
+                </div>
+                <button class="w-100 btn btn-lg btn-primary form-button" id="btnBusca" class="btn btn-primary" type="button" onclick="abrirProjetoGitPod()" disabled>
+                    <span id="spLoading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                    <span id="spLoadingMsg">  Carregando Branches ...</span>
+                </button>
+            </div>
+        </div>
+    </form>
+</main>
+</body>
+</html>
