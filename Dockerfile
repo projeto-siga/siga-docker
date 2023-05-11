@@ -46,21 +46,14 @@ RUN echo "downloading vizservice.war" && curl -s https://api.github.com/repos/pr
 #--- DEPLOY DO ARQUIVO .WAR ---
 RUN mv vizservice.war ${JBOSS_HOME}/standalone/deployments/
 
-#--- DOWNLOAD LATEST VERSION FROM GITHUB
-RUN echo "downloading siga.war, sigaex.war, siga-le.war, sigasr.war, sigagc.war, sigatp.war and sigawf.war" && curl -s https://api.github.com/repos/projeto-siga/siga/releases/latest \
-  | grep browser_download_url \
-  | grep .war \
-  | cut -d '"' -f 4 \
-  | xargs wget -q
 
-#--- DEPLOY DO ARQUIVO .WAR ---
-RUN mv siga.war ${JBOSS_HOME}/standalone/deployments/
-RUN mv sigaex.war ${JBOSS_HOME}/standalone/deployments/
-RUN mv sigawf.war ${JBOSS_HOME}/standalone/deployments/
-RUN mv sigasr.war ${JBOSS_HOME}/standalone/deployments/
-RUN mv sigagc.war ${JBOSS_HOME}/standalone/deployments/
-RUN mv sigatp.war ${JBOSS_HOME}/standalone/deployments/
-RUN mv siga-le.war ${JBOSS_HOME}/standalone/deployments/
+#--- DEPLOY DO ARQUIVO .WAR FROM LOCAL BUILD
+ADD siga/target/siga.war ${JBOSS_HOME}/standalone/deployments/
+ADD siga/target/sigaex.war ${JBOSS_HOME}/standalone/deployments/
+ADD siga/target/sigawf.war ${JBOSS_HOME}/standalone/deployments/
+ADD siga/target/sigasr.war ${JBOSS_HOME}/standalone/deployments/
+ADD siga/target/sigagc.war ${JBOSS_HOME}/standalone/deployments/
+ADD siga/target/sigatp.war ${JBOSS_HOME}/standalone/deployments/
 
 #--- ou copie diretamente do diretório siga-docker para fins de debug
 # COPY --chown=jboss ./*.war ${JBOSS_HOME}/standalone/deployments/
