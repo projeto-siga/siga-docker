@@ -7,7 +7,7 @@ services:
     build:
       context: .
       args:
-        BRANCH: ${BRANCH}
+        BRANCH: ${BRANCH:-master}
     depends_on:
       - mysqlserver
       - redisserver
@@ -20,7 +20,6 @@ services:
     environment:
       TZ: "America/Sao_Paulo"
       JBOSS_USER: "root"
-      BRANCH: ${BRANCH:-master}
     volumes:
       - log-volume:/var/log
       - tmp-volume:/var/tmp/siga
