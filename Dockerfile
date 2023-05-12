@@ -4,11 +4,14 @@ MAINTAINER crivano@jfrj.jus.br
 #--- ADD ORACLE AND MYSQL DRIVERS
 ADD --chown=jboss ./modules.tar.gz ${JBOSS_HOME}/
 
+ARG BRANCH=master
+
 #--- SET TIMEZONE
 ENV TZ=America/Sao_Paulo
 ENV LANG pt_BR.UTF-8
 ENV LANGUAGE pt_BR.UTF-8
 ENV LC_ALL pt_BR.UTF-8
+ENV BRANCH={BRANCH}
 
 RUN sudo apk --update --no-cache add busybox-extras tzdata
 #RUN sudo yum -y install telnet
@@ -46,6 +49,12 @@ RUN echo "downloading vizservice.war" && curl -s https://api.github.com/repos/pr
 #--- DEPLOY DO ARQUIVO .WAR ---
 RUN mv vizservice.war ${JBOSS_HOME}/standalone/deployments/
 
+
+#--- CLONE FROM BRANCH
+RUN git clone https://github.com/projeto-siga/siga.git -b ${BRANCH}
+
+#--- BUILD ARTIFACTS
+RUN mvn clean package -T 1C -DskipTests=true
 
 #--- DEPLOY DO ARQUIVO .WAR FROM LOCAL BUILD
 ADD siga/target/siga.war ${JBOSS_HOME}/standalone/deployments/

@@ -3,25 +3,8 @@ image: gitpod/workspace-full
 tasks:
   - name: sigadoc-starter
     init: |
-      eval  git clone https://github.com/projeto-siga/siga.git -b $(echo -e $GITPOD_WORKSPACE_CONTEXT | jq -r '.envvars[0].value')
+      eval export BRANCH=$(echo -e $GITPOD_WORKSPACE_CONTEXT | jq -r '.envvars[0].value')
     command: |
-      rm -f /home/gitpod/.sdkman/etc/config &&
-      echo sdkman_auto_answer=true >> /home/gitpod/.sdkman/etc/config &&
-      echo sdkman_auto_env=true >> /home/gitpod/.sdkman/etc/config &&
-      echo sdkman_auto_update=true  >> /home/gitpod/.sdkman/etc/config &&
-      echo sdkman_beta_channel=false  >> /home/gitpod/.sdkman/etc/config &&
-      echo sdkman_checksum_enable=true  >> /home/gitpod/.sdkman/etc/config &&
-      echo sdkman_colour_enable=true  >> /home/gitpod/.sdkman/etc/config &&
-      echo sdkman_curl_connect_timeout=7  >> /home/gitpod/.sdkman/etc/config &&
-      echo sdkman_curl_max_time=10  >> /home/gitpod/.sdkman/etc/config &&
-      echo sdkman_debug_mode=false  >> /home/gitpod/.sdkman/etc/config &&
-      echo sdkman_insecure_ssl=false  >> /home/gitpod/.sdkman/etc/config &&
-      echo sdkman_rosetta2_compatible=false  >> /home/gitpod/.sdkman/etc/config &&
-      echo sdkman_selfupdate_feature=false  >> /home/gitpod/.sdkman/etc/config &&
-      sdk install  java 8.0.302-open &&
-      cd /workspace/siga-docker/siga &&
-      git pull &&
-      mvn clean package -T 1C -DskipTests=true &&
       docker rmi -f siga-docker-appserver &&
       docker-compose up &&
       gp await-port 8080 && gp preview $(gp url 8080)      
