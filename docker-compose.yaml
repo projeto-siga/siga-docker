@@ -4,12 +4,15 @@ services:
   appserver:
     user: root
     container_name: appserver
-    build: .
+    build:
+      context: .
+      args:
+        BRANCH: ${BRANCH:-master}
     depends_on:
-      - mysqlserver      
+      - mysqlserver
       - redisserver
-      - emailserver    
-    command: ["bin/wait-for-it.sh mysqlserver:3306 -t 120 && jboss-eap-7.2/bin/standalone.sh"] 
+      - emailserver
+    command: ["bin/wait-for-it.sh mysqlserver:3306 -t 120 && jboss-eap-7.2/bin/standalone.sh"]
     ports:
       - "8080:8080"
       #- "9990:9990"

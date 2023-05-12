@@ -1,18 +1,14 @@
 image: gitpod/workspace-full
 
-
-# when starting a workspace all docker images are ready
 tasks:
-  - name: docker-up
-    command: sudo docker-up
-#  - name: Set CKEditor Url do Siga
-#    command: sed -i "s|http://localhost:8080/ckeditor/ckeditor/ckeditor.js|${GITPOD_WORKSPACE_URL/https:\/\//https://8080-}/ckeditor/ckeditor/ckeditor.js|" standalone.xml
   - name: sigadoc-starter
-    prebuild: |
-      sudo docker-up       
+    init: |
+      export BRANCH=$(echo -e $GITPOD_WORKSPACE_CONTEXT | jq -r '.envvars[0].value')
     command: |
-      docker-compose up && gp await-port 8080 && gp preview $(gp url 8080)
- 
+      docker rmi -f siga-docker-appserver &&
+      docker-compose up &&
+      gp await-port 8080 && gp preview $(gp url 8080)      
+
 github:
   prebuilds:
     # enable for the master/default branch (defaults to true)
