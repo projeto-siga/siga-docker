@@ -3,7 +3,7 @@ image: gitpod/workspace-full
 tasks:
   - name: sigadoc-starter
     init: |
-      eval export BRANCH=$(echo -e $GITPOD_WORKSPACE_CONTEXT | jq -r '.envvars[0].value')
+      export BRANCH=$(echo -e $GITPOD_WORKSPACE_CONTEXT | jq -r '.envvars[0].value')
     command: |
       docker rmi -f siga-docker-appserver &&
       docker-compose up &&

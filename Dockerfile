@@ -1,6 +1,7 @@
 FROM daggerok/jboss-eap-7.2:7.2.5-alpine
 MAINTAINER crivano@jfrj.jus.br
 
+
 #--- ADD ORACLE AND MYSQL DRIVERS
 ADD --chown=jboss ./modules.tar.gz ${JBOSS_HOME}/
 
@@ -11,9 +12,9 @@ ENV TZ=America/Sao_Paulo
 ENV LANG pt_BR.UTF-8
 ENV LANGUAGE pt_BR.UTF-8
 ENV LC_ALL pt_BR.UTF-8
-ENV BRANCH={BRANCH}
+ENV BRANCH=${BRANCH}
 
-RUN sudo apk --update --no-cache add busybox-extras tzdata
+RUN sudo apk --update --no-cache add busybox-extras tzdata git maven
 #RUN sudo yum -y install telnet
 
 #--- SET TIMEZONE
@@ -49,20 +50,21 @@ RUN echo "downloading vizservice.war" && curl -s https://api.github.com/repos/pr
 #--- DEPLOY DO ARQUIVO .WAR ---
 RUN mv vizservice.war ${JBOSS_HOME}/standalone/deployments/
 
-
 #--- CLONE FROM BRANCH
+RUN echo 'Clone apartir do branch' ${BRANCH}
 RUN git clone https://github.com/projeto-siga/siga.git -b ${BRANCH}
 
 #--- BUILD ARTIFACTS
-RUN mvn clean package -T 1C -DskipTests=true
+RUN  cd siga &&  mvn clean package -T 1C -DskipTests=true
 
 #--- DEPLOY DO ARQUIVO .WAR FROM LOCAL BUILD
-ADD siga/target/siga.war ${JBOSS_HOME}/standalone/deployments/
-ADD siga/target/sigaex.war ${JBOSS_HOME}/standalone/deployments/
-ADD siga/target/sigawf.war ${JBOSS_HOME}/standalone/deployments/
-ADD siga/target/sigasr.war ${JBOSS_HOME}/standalone/deployments/
-ADD siga/target/sigagc.war ${JBOSS_HOME}/standalone/deployments/
-ADD siga/target/sigatp.war ${JBOSS_HOME}/standalone/deployments/
+RUN cd siga  && \
+   mv target/siga.war ${JBOSS_HOME}/standalone/deployments/    && \
+   mv target/sigaex.war ${JBOSS_HOME}/standalone/deployments/  && \
+   mv target/sigawf.war ${JBOSS_HOME}/standalone/deployments/  && \
+   mv target/sigasr.war ${JBOSS_HOME}/standalone/deployments/  && \
+   mv target/sigagc.war ${JBOSS_HOME}/standalone/deployments/  && \
+   mv target/sigatp.war ${JBOSS_HOME}/standalone/deployments/
 
 #--- ou copie diretamente do diretório siga-docker para fins de debug
 # COPY --chown=jboss ./*.war ${JBOSS_HOME}/standalone/deployments/

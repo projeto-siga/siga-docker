@@ -4,7 +4,10 @@ services:
   appserver:
     user: root
     container_name: appserver
-    build: .
+    build:
+      context: .
+      args:
+        BRANCH: ${BRANCH}
     depends_on:
       - mysqlserver
       - redisserver
