@@ -76,7 +76,7 @@ Escolha uma opção:
 
 ```
 
- * Opção 1 irá listar o branches a partir do reppsitório [Siga](https://github.com/projeto-siga/siga) 
+ * Opção 1 irá listar o branches a partir do repositório [Siga](https://github.com/projeto-siga/siga) 
 
 ```
 Opção selecionada: 1
