@@ -53,6 +53,8 @@ RUN mv vizservice.war ${JBOSS_HOME}/standalone/deployments/
 #--- CLONE FROM BRANCH
 RUN echo 'Clone apartir do branch' ${BRANCH}
 RUN git clone https://github.com/projeto-siga/siga.git -b ${BRANCH}
+ADD https://api.github.com/repos/projeto-siga/siga/commits/${BRANCH}?per_page=1 /tmp/last_commit
+RUN cd siga && git pull
 
 #--- BUILD ARTIFACTS
 RUN  cd siga &&  mvn clean package -T 1C -DskipTests=true

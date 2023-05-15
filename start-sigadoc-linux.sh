@@ -10,6 +10,23 @@ exibir_opcoes() {
     echo
 }
 
+limpar_repo(){
+   
+	# Armazena o valor do comando docker images --filter=reference="*appserver" -q em uma variável
+	images=$(docker images --filter=reference="*appserver" -q)
+
+	# Verifica se a variável images contém algum valor
+	if [ -n "$images" ]; then
+		  # Executa o comando docker rmi -f com base no valor da variável images
+		    docker rmi -f $images
+		      echo "Remoção das imagens com referência '*appserver' concluída."
+	      else
+		        echo "Nenhuma imagem com referência '*appserver' encontrada para remoção."
+	fi
+	
+	docker rm appserver mysqlserver redisserver emailserver
+}
+
 # Função para exibir a lista de branches
 exibir_branches() {
     echo "Obtendo a lista de branches..."
@@ -44,27 +61,13 @@ executar_SIGA() {
 		export BRANCH=$branch
 	fi
     
-	
-    if [ -d "siga-docker" ]; then
-	    echo ""
-	    echo "Atualizando siga docker..."	
-		echo ""
-        cd siga-docker		
-	    git pull
-    else
-	    echo ""
-        echo "Clonando siga docker..."	
-        echo ""		
-		git clone https://github.com/projeto-siga/siga-docker
-		cd siga-docker
-    fi
-    
+  
 
     echo ""
     echo "Executando docker-compose para o Branch $branch..."
     echo ""
 	echo "Removendo imagens antigas do siga"
-	docker rmi -f "siga-docker-appserver"
+	limpar_repo   
 	echo ""
 	echo "Iniciando SIGA"
 	echo ""

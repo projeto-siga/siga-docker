@@ -8,6 +8,22 @@ function exibir_opcoes {
     Write-Host ""
 }
 
+function limpar-Repo {
+    # Armazena o valor do comando docker images --filter=reference="*appserver" -q em uma variável
+    $images = docker images --filter reference="*appserver" -q
+
+    # Verifica se a variável images contém algum valor
+    if ($images) {
+        # Executa o comando docker rmi -f com base no valor da variável images
+        docker rmi -f $images
+        Write-Host "Remoção das imagens com referência '*appserver' concluída."
+    } else {
+        Write-Host "Nenhuma imagem com referência '*appserver' encontrada para remoção."
+    }
+
+    docker rm appserver mysqlserver redisserver emailserver
+}
+
 # Função para exibir a lista de branches
 function exibir_branches {
 	Write-Host ""
@@ -50,25 +66,11 @@ function executar_SIGA {
         $env:BRANCH = $branch
     }
 
-    if (Test-Path "siga-docker") {
-        Write-Host ""
-        Write-Host "Atualizando siga docker..."
-        Write-Host ""
-        Set-Location "siga-docker"
-        git pull
-    } else {
-        Write-Host ""
-        Write-Host "Clonando siga docker..."
-        Write-Host ""
-        git clone https://github.com/projeto-siga/siga-docker
-        Set-Location "siga-docker"
-    }
-
     Write-Host ""
     Write-Host "Executando docker-compose para o Branch $branch..."
     Write-Host ""
     Write-Host "Removendo imagens antigas do siga"
-    docker rmi -f "siga-docker-appserver"
+    limpar-Repo
     Write-Host ""
     Write-Host "Iniciando SIGA"
     Write-Host ""
@@ -77,7 +79,7 @@ function executar_SIGA {
     Write-Host ""
 }
 
-Clear-Host
+[Console]::OutputEncoding =  [System.Text.Encoding]::GetEncoding(1252)
 
 Write-Host " "
 Write-Host "   _____ _                   ____             __            "
