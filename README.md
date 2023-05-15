@@ -24,6 +24,9 @@ $ git clone https://github.com/projeto-siga/siga-docker.git siga-docker
 $ cd siga-docker
 ```
 
+
+### Método 1
+
 Utilize o Docker para carregar e depois disponibilizar todos os serviços necessários ao funcionamento do Siga-Doc:
 
 ```
@@ -33,6 +36,121 @@ $ docker-compose up
 Pronto, o Siga-Doc estará ativo. Para acessá-lo, aponte o navegador Google Chrome para http://localhost:8080/siga
 
 Faça login com ZZ99999/Password1 e já poderá ver o Siga funcionando.
+
+### Método 2
+
+#### Windows
+
+Execute no terminal PowerShell:
+
+```
+  .\start-siga-windows.ps1  
+```
+
+#### Linux
+
+Execute no terminal Shell:
+
+```
+ $  chmod +x start-siga-linux.sh
+ $  .\start-siga-linux.sh  
+```
+
+#### Opções ao executar 
+
+```
+
+   _____ _                   ____             __
+  / ___/(_)___ _____ _      / __ \____  _____/ /_____  _____
+  \__ \/ / __ '/ __ '/_____/ / / / __ \/ ___/ //_/ _ \/ ___/
+ ___/ / / /_/ / /_/ /_____/ /_/ / /_/ / /__/ ,< /  __/ /
+/____/_/\__,_/\__,_/     /_____/\____/\___/_/|_|\___/_/
+       /____/
+
+
+Escolha uma opção:
+
+1. Exibir lista de branches
+2. Executar SIGA
+3. Sair
+
+```
+
+ * Opção 1 irá listar o branches a partir do reppsitório [Siga](https://github.com/projeto-siga/siga) 
+
+```
+Opção selecionada: 1
+Obtendo a lista de branches...
+Branches disponíveis:
+4.x
+5.3.4.1
+5.3.9.1
+6.0.6.1
+7.0.4.2
+8.0.1.48
+10.2.6
+10.21
+11.0.2
+11.0.3
+1056-historico-tramitacao
+
+>>>>
+```
+
+* Copie o nome do branch desejado e em seguida digite 2
+* Cole o nome da branch ou preencha manualmente
+
+```
+Escolha uma opção:
+
+1. Exibir lista de branches
+2. Executar SIGA
+3. Sair
+
+Opção selecionada: 2
+Digite o nome do branch:
+develop
+
+>>>>>
+
+Atualizando siga docker...
+
+Already up to date.
+
+Executando docker-compose para o Branch develop...
+
+Removendo imagens antigas do siga
+
+Iniciando SIGA
+
+Building appserver
+Step 1/27 : FROM daggerok/jboss-eap-7.2:7.2.5-alpine
+ ---> 88755a39c38e
+Step 2/27 : MAINTAINER crivano@jfrj.jus.br
+ ---> Using cache
+ ---> 365a78a4c0ed
+Step 3/27 : ADD --chown=jboss ./modules.tar.gz ${JBOSS_HOME}/
+ ---> Using cache
+ 
+ >>>>
+
+appserver      | 11:53:52,823 INFO  [org.flywaydb.core.internal.command.DbMigrate] (Thread-141) Migrating schema `siga` to version 114.0 - blob drop columns
+appserver      | 11:53:52,829 WARN  [org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor] (Thread-141) DB: PROCEDURE siga.tmpproc does not exist (SQL State: 42000 - Error Code: 1305)
+appserver      | 11:53:53,530 INFO  [org.flywaydb.core.internal.command.DbMigrate] (Thread-141) Migrating schema `siga` to version 115.0 - ex mobil aumento col num sequencia
+appserver      | 11:53:53,620 WARN  [org.flywaydb.core.internal.sqlscript.DefaultSqlScriptExecutor] (Thread-141) DB: Integer display width is deprecated and will be removed in a future release. (SQL State: HY000 - Error Code: 1681)
+appserver      | 11:53:53,634 INFO  [org.flywaydb.core.internal.command.DbMigrate] (Thread-141) Migrating schema `siga` to version 116.0 - Cadastrante nulo
+appserver      | 11:53:54,140 INFO  [org.flywaydb.core.internal.command.DbMigrate] (Thread-141) Successfully applied 47 migrations to schema `siga` (execution time 00:08.594s)
+
+>>>
+```
+
+Pronto, o Siga-Doc estará ativo. Para acessá-lo, aponte o navegador Google Chrome para http://localhost:8080/siga
+
+Faça login com ZZ99999/Password1 e já poderá ver o Siga funcionando.
+
+
+
+
 
 ## Customizações Mínimas de Segurança
 
