@@ -44,7 +44,7 @@ Faça login com ZZ99999/Password1 e já poderá ver o Siga funcionando.
 Execute no terminal PowerShell:
 
 ```
-  .\start-siga-windows.ps1  
+  .\start-sigadoc-windows.ps1 
 ```
 
 #### Linux
@@ -52,8 +52,8 @@ Execute no terminal PowerShell:
 Execute no terminal Shell:
 
 ```
- $  chmod +x start-siga-linux.sh
- $  .\start-siga-linux.sh  
+ $  chmod +x start-sigadoc-linux.sh
+ $  .\start-sigadoc-linux.sh  
 ```
 
 #### Opções ao executar 
