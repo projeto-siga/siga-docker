@@ -259,6 +259,12 @@ Antes de reiniciar o Siga, será necessário criar os esquemas no novo MySQL. Pa
 
 Depois que o Siga estiver funcionando no novo MySQL, remova do `docker-compose.yaml` o serviço `mysql.server`.
 
+Ainda dentro do `docker-compose.yaml` é necessario alterar o caminho do banco que é informado para o script
+
+```
+command: ["bin/wait-for-it.sh CAMINHO.DO.BANCO:3306 -t 120 && jboss-eap-7.2/bin/standalone.sh"]
+````
+
 ## Substituindo o REDIS
 
 O REDIS é um banco de dados chave-valor em memória, o Siga precisa dele para realizar algumas operações assíncronas como a concatenação
